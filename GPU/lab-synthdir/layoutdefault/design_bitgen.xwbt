@@ -1,0 +1,7 @@
+INFILE=/edu/danpe419/Desktop/jbox/gol/lab-synthdir/layoutdefault/design.ncd
+OUTFILE=/edu/danpe419/Desktop/jbox/gol/lab-synthdir/layoutdefault/design.bit
+FAMILY=Spartan6
+PART=xc6slx16-3csg324
+WORKINGDIR=/edu/danpe419/Desktop/jbox/gol/lab-synthdir/layoutdefault
+LICENSE=ISE
+USER_INFO=1777494980_210567422_043
