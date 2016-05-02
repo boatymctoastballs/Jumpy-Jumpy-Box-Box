@@ -1,0 +1,4 @@
+vhdl work "../../../lab.vhd"
+vhdl work "../../../leddriver.vhd"
+vhdl work "../../../KBD_ENC.vhd"
+vhdl work "../../../PICT_MEM.vhd"

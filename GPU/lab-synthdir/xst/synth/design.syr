@@ -1,0 +1,461 @@
+Release 12.4 - xst M.81d (lin64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to tmpdir
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "design.prj"
+
+---- Target Parameters
+Output File Name                   : "design.ngc"
+Target Device                      : xc6slx16-3-csg324
+
+---- Source Options
+Top Module Name                    : lab
+
+=========================================================================
+
+WARNING:Xst:29 - Optimization Effort not specified
+The following parameters have been added:
+Optimization Goal                  : SPEED
+
+=========================================================================
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/edu/danpe419/Desktop/jbox/gol/lab-synthdir/xst/synth/../../../lab.vhd" into library work
+Parsing entity <lab>.
+Parsing architecture <Behavioral> of entity <lab>.
+Parsing VHDL file "/edu/danpe419/Desktop/jbox/gol/lab-synthdir/xst/synth/../../../leddriver.vhd" into library work
+Parsing entity <leddriver>.
+Parsing architecture <Behavioral> of entity <leddriver>.
+Parsing VHDL file "/edu/danpe419/Desktop/jbox/gol/lab-synthdir/xst/synth/../../../KBD_ENC.vhd" into library work
+Parsing entity <KBD_ENC>.
+Parsing architecture <behavioral> of entity <kbd_enc>.
+Parsing VHDL file "/edu/danpe419/Desktop/jbox/gol/lab-synthdir/xst/synth/../../../PICT_MEM.vhd" into library work
+Parsing entity <PICT_MEM>.
+Parsing architecture <Behavioral> of entity <pict_mem>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <lab> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <KBD_ENC> (architecture <behavioral>) from library <work>.
+INFO:HDLCompiler:679 - "/edu/danpe419/Desktop/jbox/gol/lab-synthdir/xst/synth/../../../KBD_ENC.vhd" Line 303. Case statement is complete. others clause is never selected
+
+Elaborating entity <PICT_MEM> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <leddriver> (architecture <Behavioral>) from library <work>.
+WARNING:HDLCompiler:634 - "/edu/danpe419/Desktop/jbox/gol/lab-synthdir/xst/synth/../../../lab.vhd" Line 64: Net <addr2_s[10]> does not have a driver.
+WARNING:Xst:2972 - "/edu/danpe419/Desktop/jbox/gol/lab.vhd" line 185. All outputs of instance <U0> of block <KBD_ENC> are unconnected in block <lab>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/edu/danpe419/Desktop/jbox/gol/lab.vhd" line 186. All outputs of instance <U1> of block <PICT_MEM> are unconnected in block <lab>. Underlying logic will be removed.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <lab>.
+    Related source file is "/edu/danpe419/Desktop/jbox/gol/lab.vhd".
+INFO:Xst:3010 - "/edu/danpe419/Desktop/jbox/gol/lab.vhd" line 186: Output port <data_out1> of the instance <U1> is unconnected or connected to loadless signal.
+INFO:Xst:3010 - "/edu/danpe419/Desktop/jbox/gol/lab.vhd" line 186: Output port <data_out2> of the instance <U1> is unconnected or connected to loadless signal.
+WARNING:Xst:653 - Signal <addr2_s> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    Found 10-bit register for signal <xctr>.
+    Found 1-bit register for signal <Hsync>.
+    Found 10-bit register for signal <yctr>.
+    Found 1-bit register for signal <Vsync>.
+    Found 8-bit register for signal <hej>.
+    Found 16-bit register for signal <ctr>.
+    Found 2-bit register for signal <pixel>.
+    Found 2-bit adder for signal <pixel[1]_GND_6_o_add_0_OUT> created at line 93.
+    Found 10-bit adder for signal <xctr[9]_GND_6_o_add_5_OUT> created at line 107.
+    Found 10-bit adder for signal <yctr[9]_GND_6_o_add_15_OUT> created at line 127.
+    Found 16-bit adder for signal <ctr[15]_GND_6_o_add_45_OUT> created at line 179.
+    Found 10-bit comparator lessequal for signal <n0032> created at line 145
+    Found 10-bit comparator lessequal for signal <n0034> created at line 145
+    Found 10-bit comparator greater for signal <yctr[9]_GND_6_o_LessThan_29_o> created at line 150
+    Found 10-bit comparator greater for signal <GND_6_o_yctr[9]_LessThan_30_o> created at line 150
+    Found 10-bit comparator greater for signal <GND_6_o_xctr[9]_LessThan_32_o> created at line 157
+    Found 10-bit comparator greater for signal <xctr[9]_GND_6_o_LessThan_33_o> created at line 157
+    Found 10-bit comparator greater for signal <GND_6_o_yctr[9]_LessThan_35_o> created at line 157
+    Summary:
+	inferred   4 Adder/Subtractor(s).
+	inferred  48 D-type flip-flop(s).
+	inferred   7 Comparator(s).
+	inferred   1 Multiplexer(s).
+Unit <lab> synthesized.
+
+Synthesizing Unit <leddriver>.
+    Related source file is "/edu/danpe419/Desktop/jbox/gol/leddriver.vhd".
+WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 7-bit register for signal <segments>.
+    Found 4-bit register for signal <an>.
+    Found 18-bit register for signal <counter_r>.
+    Found 18-bit adder for signal <counter_r[17]_GND_19_o_add_1_OUT> created at line 1241.
+    Found 16x7-bit Read Only RAM for signal <v[3]_GND_19_o_wide_mux_2_OUT>
+    Found 4x4-bit Read Only RAM for signal <counter_r[17]_PWR_11_o_wide_mux_3_OUT>
+    Found 1-bit 4-to-1 multiplexer for signal <v<3>> created at line 43.
+    Found 1-bit 4-to-1 multiplexer for signal <v<2>> created at line 43.
+    Found 1-bit 4-to-1 multiplexer for signal <v<1>> created at line 43.
+    Found 1-bit 4-to-1 multiplexer for signal <v<0>> created at line 43.
+    Summary:
+	inferred   2 RAM(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  29 D-type flip-flop(s).
+	inferred   4 Multiplexer(s).
+Unit <leddriver> synthesized.
+RTL-Simplification CPUSTAT: 0.05 
+RTL-BasicInf CPUSTAT: 0.15 
+RTL-BasicOpt CPUSTAT: 0.00 
+RTL-Remain-Bus CPUSTAT: 0.01 
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 16x7-bit single-port Read Only RAM                    : 1
+ 4x4-bit single-port Read Only RAM                     : 1
+# Adders/Subtractors                                   : 5
+ 10-bit adder                                          : 2
+ 16-bit adder                                          : 1
+ 18-bit adder                                          : 1
+ 2-bit adder                                           : 1
+# Registers                                            : 10
+ 1-bit register                                        : 2
+ 10-bit register                                       : 2
+ 16-bit register                                       : 1
+ 18-bit register                                       : 1
+ 2-bit register                                        : 1
+ 4-bit register                                        : 1
+ 7-bit register                                        : 1
+ 8-bit register                                        : 1
+# Comparators                                          : 7
+ 10-bit comparator greater                             : 5
+ 10-bit comparator lessequal                           : 2
+# Multiplexers                                         : 5
+ 1-bit 4-to-1 multiplexer                              : 4
+ 8-bit 2-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <lab>.
+The following registers are absorbed into counter <pixel>: 1 register on signal <pixel>.
+The following registers are absorbed into counter <ctr>: 1 register on signal <ctr>.
+The following registers are absorbed into counter <xctr>: 1 register on signal <xctr>.
+The following registers are absorbed into counter <yctr>: 1 register on signal <yctr>.
+Unit <lab> synthesized (advanced).
+
+Synthesizing (advanced) Unit <leddriver>.
+The following registers are absorbed into counter <counter_r>: 1 register on signal <counter_r>.
+INFO:Xst:3048 - The small RAM <Mram_v[3]_GND_19_o_wide_mux_2_OUT> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 7-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <v>             |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3048 - The small RAM <Mram_counter_r[17]_PWR_11_o_wide_mux_3_OUT> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 4-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <counter_r>     |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <leddriver> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 16x7-bit single-port distributed Read Only RAM        : 1
+ 4x4-bit single-port distributed Read Only RAM         : 1
+# Counters                                             : 5
+ 10-bit up counter                                     : 2
+ 16-bit up counter                                     : 1
+ 18-bit up counter                                     : 1
+ 2-bit up counter                                      : 1
+# Registers                                            : 21
+ Flip-Flops                                            : 21
+# Comparators                                          : 7
+ 10-bit comparator greater                             : 5
+ 10-bit comparator lessequal                           : 2
+# Multiplexers                                         : 4
+ 1-bit 4-to-1 multiplexer                              : 4
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <hej_2> in Unit <lab> is equivalent to the following FF/Latch, which will be removed : <hej_3> 
+INFO:Xst:2261 - The FF/Latch <hej_0> in Unit <lab> is equivalent to the following FF/Latch, which will be removed : <hej_1> 
+INFO:Xst:2261 - The FF/Latch <hej_5> in Unit <lab> is equivalent to the following 2 FFs/Latches, which will be removed : <hej_6> <hej_7> 
+
+Optimizing unit <lab> ...
+
+Optimizing unit <leddriver> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 0) on block lab, actual ratio is 1.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 73
+ Flip-Flops                                            : 73
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : design.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 242
+#      GND                         : 1
+#      INV                         : 5
+#      LUT1                        : 50
+#      LUT2                        : 8
+#      LUT3                        : 19
+#      LUT4                        : 23
+#      LUT5                        : 7
+#      LUT6                        : 24
+#      MUXCY                       : 50
+#      VCC                         : 1
+#      XORCY                       : 54
+# FlipFlops/Latches                : 73
+#      FD                          : 41
+#      FDR                         : 6
+#      FDRE                        : 26
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 23
+#      IBUF                        : 1
+#      OBUF                        : 22
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              73  out of  18224     0%  
+ Number of Slice LUTs:                  136  out of   9112     1%  
+    Number used as Logic:               136  out of   9112     1%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    136
+   Number with an unused Flip Flop:      63  out of    136    46%  
+   Number with an unused LUT:             0  out of    136     0%  
+   Number of fully used LUT-FF pairs:    73  out of    136    53%  
+   Number of unique control sets:         5
+
+IO Utilization: 
+ Number of IOs:                          26
+ Number of bonded IOBs:                  24  out of    232    10%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 73    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 4.886ns (Maximum Frequency: 204.656MHz)
+   Minimum input arrival time before clock: 4.554ns
+   Maximum output required time after clock: 3.668ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.886ns (frequency: 204.656MHz)
+  Total number of paths / destination ports: 1776 / 113
+-------------------------------------------------------------------------
+Delay:               4.886ns (Levels of Logic = 4)
+  Source:            yctr_4 (FF)
+  Destination:       yctr_1 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: yctr_4 to yctr_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               8   0.447   1.031  yctr_4 (yctr_4)
+     LUT3:I0->O            1   0.205   0.580  _n01651_SW0 (N36)
+     LUT6:I5->O           18   0.205   1.050  _n01651 (N9)
+     LUT6:I5->O           10   0.205   0.857  Mcount_yctr_val1 (Mcount_yctr_val)
+     LUT4:I3->O            1   0.205   0.000  yctr_1_rstpot (yctr_1_rstpot)
+     FD:D                      0.102          yctr_1
+    ----------------------------------------
+    Total                      4.886ns (1.369ns logic, 3.517ns route)
+                                       (28.0% logic, 72.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 39 / 39
+-------------------------------------------------------------------------
+Offset:              4.554ns (Levels of Logic = 4)
+  Source:            rst (PAD)
+  Destination:       vs (FF)
+  Destination Clock: clk rising
+
+  Data Path: rst to vs
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            21   1.222   1.458  rst_IBUF (rst_IBUF)
+     LUT5:I0->O            1   0.203   0.580  _n01571_SW0 (N40)
+     LUT6:I5->O            1   0.205   0.580  _n01571 (N7)
+     LUT4:I3->O            1   0.205   0.000  vs_glue_rst (vs_glue_rst)
+     FD:D                      0.102          vs
+    ----------------------------------------
+    Total                      4.554ns (1.937ns logic, 2.617ns route)
+                                       (42.5% logic, 57.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 21 / 21
+-------------------------------------------------------------------------
+Offset:              3.668ns (Levels of Logic = 1)
+  Source:            hej_5 (FF)
+  Destination:       vgaRed<2> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: hej_5 to vgaRed<2>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.447   0.650  hej_5 (hej_5)
+     OBUF:I->O                 2.571          vgaRed_2_OBUF (vgaRed<2>)
+    ----------------------------------------
+    Total                      3.668ns (3.018ns logic, 0.650ns route)
+                                       (82.3% logic, 17.7% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    4.886|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 4.27 secs
+ 
+--> 
+
+
+Total memory usage is 461492 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    6 (   0 filtered)
+Number of infos    :    7 (   0 filtered)
+
