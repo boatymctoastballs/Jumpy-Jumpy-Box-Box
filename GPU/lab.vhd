@@ -78,10 +78,9 @@ architecture Behavioral of lab is
   signal vs : std_logic := '1';
   --type ram_t is array (0 to 59) of std_logic_vector(0 to 79);
   signal hej : std_logic_vector(7 downto 0) := "00000000";
-
-
-
-
+  signal jumpctr : std_logic_vector(19 downto 0) := X"00000";
+	signal ypos : std_logic_vector(15 downto 0) := std_logic_vector(to_unsigned(339, 16));
+  signal knapp : std_logic := '0';
 
   signal video : std_logic;
 begin
@@ -148,18 +147,13 @@ begin
 			hej <= "11111111";
 		else
 			if yctr < 359 and yctr > 120 then
-				if data_s = x"01" then
-					hej <= "11100011";
-				else
-					hej <= "00011100";
-				end if;
-			
+				hej <= "11100011";
 			else	
 				hej <= "00000000";
 			end if;
 		--------------------------------------------
 		-------------------SPELARE-----------------------
-			if xctr>20 and xctr<40 and yctr<359 and yctr>339 then
+			if xctr>20 and xctr<40 and yctr<ypos+20 and yctr>ypos then
 				hej <= x"0F";
 			end if;
 		---------------------------------------------------
@@ -172,6 +166,30 @@ begin
   vgaRed(2 downto 0) <= hej(7 downto 5);
   vgaGreen(2 downto 0) <= hej(4 downto 2);
   vgaBlue(2 downto 1) <= hej(1 downto 0);
+
+ ----************** KOD FÖR ATT FLYTTA PÅ SPELAREN VARIABLAR OCH GREJER *******************--------
+  process(clk) begin
+		if rising_edge(clk) then
+			jumpctr <= jumpctr+1;
+			--if ypos = 339 then
+				-- knapp <= '0';
+			--end if;
+			if data_s = x"00" then
+				 knapp <= '1';
+			end if;
+			if knapp = '1' then
+				if jumpctr = 0 or jumpctr = x"7FFF" then
+					ypos <= ypos-1;
+					if ypos = 339 then
+					 	knapp <= '0';
+					end if;
+					if ypos < 120 then
+						ypos <= std_logic_vector(to_unsigned(339, 16));
+					end if;
+				end if;
+			end if;
+		end if;
+	end process;
   
   
   -- ************************************
@@ -180,15 +198,15 @@ begin
      if rising_edge(clk) then
        if rst='1' then
          ctr <= X"0000";
-       elsif yctr=0 and xctr=0 and pixel=0 then
-         ctr <= ctr+1;
-       end if;
+       elsif data_s /= x"FF" then
+         ctr(7 downto 0) <= data_s;
+			 end if;
      end if;
   end process;
   
 
   U0 : KBD_ENC port map(clk=>clk, rst=>rst, PS2KeyboardCLK=>PS2KeyboardCLK, PS2KeyboardData=>PS2KeyboardData, data=>data_s, addr=>addr_s, we=>we_s);
-  U1 : PICT_MEM port map(clk=>clk, we1=>we_s, data_in1=>data_s, addr1=>addr_s, we2=>'0', data_in2=>"00000000", data_out2=>data_out2_s, addr2=>addr2_s);     
+ -- U1 : PICT_MEM port map(clk=>clk, we1=>we_s, data_in1=>data_s, addr1=>addr_s, we2=>'0', data_in2=>"00000000", data_out2=>data_out2_s, addr2=>addr2_s);     
   led: leddriver port map (clk,rst,ca,cb,cc,cd,ce,cf,cg,dp,an, ctr);
 end Behavioral;
 

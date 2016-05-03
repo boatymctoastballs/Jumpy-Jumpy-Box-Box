@@ -162,6 +162,7 @@ begin
 
 			elsif PS2state = IDLE then
 				if BC11 = '1' and ScanCode = x"F0" then --BREAK
+					--ScanCode <= x"FF";
 					PS2state <= BREAK;
 				elsif BC11 = '1' and not (ScanCode = x"F0") then --MAKE
 					PS2state <= MAKE;
@@ -176,34 +177,34 @@ begin
     TileIndex <= x"00" when x"29",	-- space
                  x"01" when x"1C",	-- A
                  x"02" when x"32",	-- B
-		 x"03" when x"21",	-- C
-		 x"04" when x"23",	-- D
-		 x"05" when x"24",	-- E
-		 x"06" when x"2B",	-- F
-		 x"07" when x"34",	-- G
-		 x"08" when x"33",	-- H
-		 x"09" when x"43",	-- I
-		 x"0A" when x"3B",	-- J
-		 x"0B" when x"42",	-- K
-		 x"0C" when x"4B",	-- L
-		 x"0D" when x"3A",	-- M
-		 x"0E" when x"31",	-- N
-		 x"0F" when x"44",	-- O
-		 x"10" when x"4D",	-- P
-		 x"11" when x"15",	-- Q
-		 x"12" when x"2D",	-- R
-		 x"13" when x"1B",	-- S
-		 x"14" when x"2C",	-- T
-		 x"15" when x"3C",	-- U
-		 x"16" when x"2A",	-- V
-		 x"17" when x"1D",	-- W
-		 x"18" when x"22",	-- X
-		 x"19" when x"35",	-- Y
-		 x"1A" when x"1A",	-- Z
-                 x"1B" when x"54",      -- Å
-                 x"1C" when x"52",      -- Ä
-                 x"1D" when x"4C",      -- Ö
-		 x"00" when others;
+								 x"03" when x"21",	-- C
+								 x"04" when x"23",	-- D
+								 x"05" when x"24",	-- E
+								 x"06" when x"2B",	-- F
+								 x"07" when x"34",	-- G
+								 x"08" when x"33",	-- H
+								 x"09" when x"43",	-- I
+								 x"0A" when x"3B",	-- J
+								 x"0B" when x"42",	-- K
+								 x"0C" when x"4B",	-- L
+								 x"0D" when x"3A",	-- M
+								 x"0E" when x"31",	-- N
+								 x"0F" when x"44",	-- O
+								 x"10" when x"4D",	-- P
+								 x"11" when x"15",	-- Q
+								 x"12" when x"2D",	-- R
+								 x"13" when x"1B",	-- S
+								 x"14" when x"2C",	-- T
+								 x"15" when x"3C",	-- U
+								 x"16" when x"2A",	-- V
+								 x"17" when x"1D",	-- W
+								 x"18" when x"22",	-- X
+								 x"19" when x"35",	-- Y
+								 x"1A" when x"1A",	-- Z
+								 x"1B" when x"54",  -- Å
+								 x"1C" when x"52",  -- Ä
+								 x"1D" when x"4C",  -- Ö
+								 x"FF" when others;
 						 
 						 
   -- set cursor movement based on scan code
@@ -319,7 +320,7 @@ begin
 
   
   -- data output is set to be x"1F" (cursor tile index) during WRCUR state, otherwise set as scan code tile index
-  data <= x"1F" when (WRstate =  WRCUR) else TileIndex;
+  data <= x"FF" when (PS2state = IDLE) else TileIndex;
 
   
 end behavioral;

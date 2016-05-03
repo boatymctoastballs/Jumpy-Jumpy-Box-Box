@@ -11,8 +11,7 @@ entity CPU is
 	--RST : in  STD_LOGIC;
 	--btnu : in std_logic;
 	--mem : out std_logic_vector(15 downto 0);
-	--outPos1 : out std_logic_vector(19 downto 0);
-	--outPos2 : out std_logic_vector (19 downto 0)
+	boxYpos : integer 121 to 339 := "101010011";
     );
 end entity;
 architecture rtl of CPU is
@@ -23,8 +22,8 @@ architecture rtl of CPU is
     signal HR_REG : STD_LOGIC_VECTOR(15 downto 0) := X"0000";
     signal IR_REG : STD_LOGIC_VECTOR(15 downto 0) := X"0000";
     signal GR0_REG : STD_LOGIC_VECTOR(15 downto 0) := X"0000"; 
-    signal GR1_REG : STD_LOGIC_VECTOR(15 downto 0) := X"00F0"; -- Pos X P1
-    signal GR2_REG : STD_LOGIC_VECTOR(15 downto 0) := X"00F0"; -- Pos Y P1
+    signal GR1_REG : STD_LOGIC_VECTOR(15 downto 0) := X"00F0"; 
+    signal GR2_REG : STD_LOGIC_VECTOR(15 downto 0) := X"00F0";  
     signal GR3_REG : STD_LOGIC_VECTOR(15 downto 0) := X"0000";
     
     -- PM/RAM och MyM
@@ -93,65 +92,12 @@ architecture rtl of CPU is
     signal SEQ : std_logic_vector(3 downto 0);
     signal myADR : std_logic_vector(6 downto 0) := "0000000";
 
-    alias xpos : std_logic_vector (9 downto 0) is GR1_REG(9 downto 0);
-    alias ypos : std_logic_vector (9 downto 0) is GR2_REG(9 downto 0);
-    signal b1 : std_logic;
-    --signal b2 : std_logic := joystick1(2);
-
-    signal x : std_logic_vector (9 downto 0);
-    signal y : std_logic_vector (9 downto 0);
-
-    signal xpos1 : std_logic_vector (9 downto 0) := "00" & X"F0";
-    signal ypos1 : std_logic_vector (9 downto 0) := "00" & X"F0";
-    signal xpos2 : std_logic_vector (9 downto 0) := "00" & X"F0";
-    signal ypos2 : std_logic_vector (9 downto 0) := "00" & X"F0";
-
-
-    signal ind : std_logic_vector (3 downto 0);
-
-    signal lastvalue : std_logic := '0';
+    --Player
+    signal velocityY : integer 0 to 7 := "000";
+    
 
     
 begin
-    --mem<=ram(to_integer(unsigned(ind)));
-    --b1<= joystick1(1);
- 
-
-
-
-    process(NEW_FRAME) begin
-        if rising_edge(NEW_FRAME) then
-
-            if(joystick1(25 downto 24) & joystick1(39 downto 32) > 600) then
-                xpos1 <= xpos1 + 1;
-            elsif(joystick1(25 downto 24) & joystick1(39 downto 32) < 300) then
-                xpos1 <= xpos1 - 1;
-            end if;
-
-            if(joystick1(9 downto 8) & joystick1(23 downto 16) > 600) then
-                ypos1 <= ypos1 - 1;
-            elsif(joystick1(9 downto 8) & joystick1(23 downto 16) < 300) then
-                ypos1 <= ypos1 + 1;
-            end if;
-            outPos1 <= xpos1 & ypos1;
-
-            if(joystick2(25 downto 24) & joystick2(39 downto 32) > 600) then
-                xpos2 <= xpos2 + 1;
-            elsif(joystick2(25 downto 24) & joystick2(39 downto 32) < 300) then
-                xpos2 <= xpos2 - 1;
-            end if;
-
-            if(joystick2(9 downto 8) & joystick2(23 downto 16) > 600) then
-                ypos2 <= ypos2 - 1;
-            elsif(joystick2(9 downto 8) & joystick2(23 downto 16) < 300) then
-                ypos2 <= ypos2 + 1;
-            end if;
-
-            outPos1 <= xpos1 & ypos1;
-            outPos2 <= xpos2 & ypos2;
-
-        end if;
-    end process;
 
     -- ----------------------------------------
     -- # ASR Register
@@ -286,29 +232,17 @@ begin
     -- ----------------------------------------
     process(CLK) begin
         if rising_edge(CLK) then
-  --          case ALU_OP is
-  --              when "0000" => null;
-  --              when "0100" => AR_REG(15 downto 0) <= AR_REG(15 downto 0) + buss(15 downto 0); -- ADD
-  --              when "0101" => AR_REG(15 downto 0) <= AR_REG(15 downto 0) - buss(15 downto 0); -- SUB
-  --              when "0001" => AR_REG(15 downto 0) <= buss(15 downto 0); -- LOAD
-		--when "0011" => AR_REG(15 downto 0) <= X"0000"; -- RESET
-		--when "1110" => -- handle X
-		--	x <=joystick1(25 downto 24) & joystick1(39 downto 32);
-		--	if(x > 600) then
-		--		AR_REG(15 downto 0) <= AR_REG(15 downto 0) + 1;
-		--	elsif(x < 300) then
-		--		AR_REG(15 downto 0) <= AR_REG(15 downto 0) - 1;
-		--	end if;
-		--when "1111" => -- handle Y
-		--	y<=joystick1(9 downto 8) & joystick1(23 downto 16);
-		--	if(y > 600) then
-		--		AR_REG(15 downto 0) <= AR_REG(15 downto 0) - 1;
-		--	elsif(y < 300) then
-		--		AR_REG(15 downto 0) <= AR_REG(15 downto 0) + 1;
-		--	end if;
-		--when "0110" => --outPos1 <= GR1_REG(9 downto 0) & GR2_REG (9 downto 0);
-  --              when others => null;
-  --          end case;
+            case ALU_OP is
+                when "0000" => null;
+                when "0100" => AR_REG(15 downto 0) <= AR_REG(15 downto 0) + buss(15 downto 0); -- ADD
+                when "0101" => AR_REG(15 downto 0) <= AR_REG(15 downto 0) - buss(15 downto 0); -- SUB
+                when "0001" => AR_REG(15 downto 0) <= buss(15 downto 0); -- LOAD
+		when "0011" => AR_REG(15 downto 0) <= X"0000"; -- RESET
+		when "1110" => -- något
+		when "1111" => -- något
+		when "0110" => --outPos1 <= GR1_REG(9 downto 0) & GR2_REG (9 downto 0);
+                when others => null;
+            end case;
         end if;
     end process;
 
