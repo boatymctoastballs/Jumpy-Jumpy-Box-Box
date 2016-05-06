@@ -9,23 +9,23 @@ Target Device  : xc6slx16
 Target Package : csg324
 Target Speed   : -3
 Mapper Version : spartan6 -- $Revision: 1.52.76.2 $
-Mapped Date    : Tue May  3 17:12:55 2016
+Mapped Date    : Fri May  6 14:14:11 2016
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    0
 Slice Logic Utilization:
-  Number of Slice Registers:                   106 out of  18,224    1%
-    Number used as Flip Flops:                 106
+  Number of Slice Registers:                   123 out of  18,224    1%
+    Number used as Flip Flops:                 123
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        216 out of   9,112    2%
-    Number used as logic:                      210 out of   9,112    2%
-      Number using O6 output only:             102
-      Number using O5 output only:              63
-      Number using O5 and O6:                   45
+  Number of Slice LUTs:                        315 out of   9,112    3%
+    Number used as logic:                      307 out of   9,112    3%
+      Number using O6 output only:             143
+      Number using O5 output only:              88
+      Number using O5 and O6:                   76
       Number used as ROM:                        0
     Number used as Memory:                       1 out of   2,176    1%
       Number used as Dual Port RAM:              0
@@ -34,20 +34,20 @@ Slice Logic Utilization:
         Number using O6 output only:             1
         Number using O5 output only:             0
         Number using O5 and O6:                  0
-    Number used exclusively as route-thrus:      5
+    Number used exclusively as route-thrus:      7
       Number with same-slice register load:      0
-      Number with same-slice carry load:         5
+      Number with same-slice carry load:         7
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    71 out of   2,278    3%
-  Number of LUT Flip Flop pairs used:          224
-    Number with an unused Flip Flop:           121 out of     224   54%
-    Number with an unused LUT:                   8 out of     224    3%
-    Number of fully used LUT-FF pairs:          95 out of     224   42%
-    Number of unique control sets:               7
+  Number of occupied Slices:                    97 out of   2,278    4%
+  Number of LUT Flip Flop pairs used:          323
+    Number with an unused Flip Flop:           202 out of     323   62%
+    Number with an unused LUT:                   8 out of     323    2%
+    Number of fully used LUT-FF pairs:         113 out of     323   34%
+    Number of unique control sets:              11
     Number of slice register sites lost
-      to control set restrictions:              37 out of  18,224    1%
+      to control set restrictions:              52 out of  18,224    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -89,11 +89,11 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                3.04
+Average Fanout of Non-Clock Nets:                3.19
 
-Peak Memory Usage:  575 MB
-Total REAL time to MAP completion:  9 secs 
-Total CPU time to MAP completion:   8 secs 
+Peak Memory Usage:  577 MB
+Total REAL time to MAP completion:  14 secs 
+Total CPU time to MAP completion:   9 secs 
 
 Table of Contents
 -----------------
@@ -145,7 +145,7 @@ INFO:Pack:1650 - Map created a placed design.
 Section 4 - Removed Logic Summary
 ---------------------------------
    2 block(s) optimized away
-  68 Block(s) redundant
+  95 Block(s) redundant
 
 Section 5 - Removed Logic
 -------------------------
@@ -158,16 +158,50 @@ VCC 		XST_VCC
 Redundant Block(s):
 TYPE 		BLOCK
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_cy<3>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<3>_rt
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_cy<5>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<5>_rt
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_cy<6>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<6>_rt
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_cy<7>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<7>_rt
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_cy<8>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<8>_rt
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_cy<9>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<9>_rt
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_cy<10>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<10>_rt
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_cy<11>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<11>_rt
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_cy<12>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<12>_rt
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_cy<13>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<13>_rt
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_cy<14>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<14>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<1>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<2>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_cy<4>_rt
+LUT1 		Msub_GND_6_o_GND_6_o_sub_63_OUT<15:0>_cy<0>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_cy<3>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_cy<5>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_cy<6>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_cy<7>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_cy<8>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_cy<9>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_cy<10>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_cy<11>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_cy<12>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_cy<13>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_cy<14>_rt
+LUT1 		Mcount_xctr_cy<1>_rt
+LUT1 		Mcount_xctr_cy<2>_rt
+LUT1 		Mcount_xctr_cy<3>_rt
+LUT1 		Mcount_xctr_cy<4>_rt
+LUT1 		Mcount_xctr_cy<5>_rt
+LUT1 		Mcount_xctr_cy<6>_rt
+LUT1 		Mcount_xctr_cy<7>_rt
+LUT1 		Mcount_xctr_cy<8>_rt
 LUT1 		Mcount_jumpctr_cy<1>_rt
 LUT1 		Mcount_jumpctr_cy<2>_rt
 LUT1 		Mcount_jumpctr_cy<3>_rt
@@ -186,14 +220,6 @@ LUT1 		Mcount_jumpctr_cy<15>_rt
 LUT1 		Mcount_jumpctr_cy<16>_rt
 LUT1 		Mcount_jumpctr_cy<17>_rt
 LUT1 		Mcount_jumpctr_cy<18>_rt
-LUT1 		Mcount_xctr_cy<1>_rt
-LUT1 		Mcount_xctr_cy<2>_rt
-LUT1 		Mcount_xctr_cy<3>_rt
-LUT1 		Mcount_xctr_cy<4>_rt
-LUT1 		Mcount_xctr_cy<5>_rt
-LUT1 		Mcount_xctr_cy<6>_rt
-LUT1 		Mcount_xctr_cy<7>_rt
-LUT1 		Mcount_xctr_cy<8>_rt
 LUT1 		Mcount_yctr_cy<1>_rt
 LUT1 		Mcount_yctr_cy<2>_rt
 LUT1 		Mcount_yctr_cy<3>_rt
@@ -202,7 +228,7 @@ LUT1 		Mcount_yctr_cy<5>_rt
 LUT1 		Mcount_yctr_cy<6>_rt
 LUT1 		Mcount_yctr_cy<7>_rt
 LUT1 		Mcount_yctr_cy<8>_rt
-LUT1 		Mcount_ypos_cy<0>_rt
+LUT1 		Mcount_boxpos_cy<0>_rt
 LUT1 		led/Mcount_counter_r_cy<16>_rt
 LUT1 		led/Mcount_counter_r_cy<15>_rt
 LUT1 		led/Mcount_counter_r_cy<14>_rt
@@ -220,11 +246,12 @@ LUT1 		led/Mcount_counter_r_cy<3>_rt
 LUT1 		led/Mcount_counter_r_cy<2>_rt
 LUT1 		led/Mcount_counter_r_cy<1>_rt
 LUT1 		Madd_ypos[15]_GND_6_o_add_33_OUT_xor<15>_rt
-LUT1 		Mcount_jumpctr_xor<19>_rt
+LUT1 		Madd_ypos[15]_GND_6_o_add_66_OUT_xor<15>_rt
+LUT1 		Madd_boxpos[15]_GND_6_o_add_38_OUT_xor<15>_rt
 LUT1 		Mcount_xctr_xor<9>_rt
+LUT1 		Mcount_jumpctr_xor<19>_rt
 LUT1 		Mcount_yctr_xor<9>_rt
 LUT1 		led/Mcount_counter_r_xor<17>_rt
-LUT1 		hej_2_glue_set_cy_rt
 
 Section 6 - IOB Properties
 --------------------------
@@ -302,25 +329,29 @@ Section 11 - Configuration String Details
 
 Section 12 - Control Set Information
 ------------------------------------
-+-------------------------------------------------------------------------------------------------------------------------+
-| Clock Signal | Reset Signal                | Set Signal | Enable Signal             | Slice Load Count | Bel Load Count |
-+-------------------------------------------------------------------------------------------------------------------------+
-| clk_BUFGP    |                             |            |                           | 19               | 59             |
-| clk_BUFGP    |                             |            | U0/PS2Clk_op              | 3                | 9              |
-| clk_BUFGP    | Mcount_xctr_val             |            | GND_6_o_GND_6_o_equal_4_o | 3                | 10             |
-| clk_BUFGP    | Mcount_yctr_val             |            | GND_6_o_GND_6_o_AND_4_o   | 3                | 10             |
-| clk_BUFGP    | U0/BC11                     |            | U0/PS2Clk_op              | 1                | 4              |
-| clk_BUFGP    | rst_IBUF                    |            |                           | 5                | 12             |
-| clk_BUFGP    | xctr[9]_yctr[9]_AND_6_o_inv |            |                           | 2                | 3              |
-+-------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------+
+| Clock Signal | Reset Signal                | Set Signal | Enable Signal                | Slice Load Count | Bel Load Count |
++----------------------------------------------------------------------------------------------------------------------------+
+| clk_BUFGP    |                             |            |                              | 16               | 48             |
+| clk_BUFGP    |                             |            | U0/PS2Clk_op                 | 3                | 9              |
+| clk_BUFGP    | Mcount_xctr_val             |            | GND_6_o_GND_6_o_equal_4_o    | 3                | 10             |
+| clk_BUFGP    | Mcount_yctr_val             |            | GND_6_o_GND_6_o_AND_4_o      | 3                | 10             |
+| clk_BUFGP    | U0/BC11                     |            | U0/PS2Clk_op                 | 1                | 4              |
+| clk_BUFGP    | _n0295                      |            | GND_6_o_GND_6_o_equal_52_o   | 1                | 1              |
+| clk_BUFGP    | _n0295                      |            | data_s[7]_GND_6_o_equal_51_o | 1                | 1              |
+| clk_BUFGP    | _n0309                      |            | knapp                        | 8                | 16             |
+| clk_BUFGP    | n0123_inv                   |            | GND_6_o_jumpctr[19]_OR_79_o  | 4                | 10             |
+| clk_BUFGP    | rst_IBUF                    |            |                              | 5                | 12             |
+| clk_BUFGP    | xctr[9]_yctr[9]_AND_6_o_inv |            |                              | 1                | 3              |
++----------------------------------------------------------------------------------------------------------------------------+
 
 Section 13 - Utilization by Hierarchy
 -------------------------------------
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Module             | Partition | Slices*       | Slice Reg     | LUTs          | LUTRAM        | BRAM/FIFO | DSP48A1 | BUFG  | BUFIO | BUFR  | DCM   | PLL_ADV   | Full Hierarchical  |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| lab/               |           | 48/73         | 72/106        | 101/147       | 0/1           | 0/0       | 0/0     | 1/1   | 0/0   | 0/0   | 0/0   | 0/0       | lab                |
-| +U0                |           | 16/16         | 16/16         | 35/35         | 1/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | lab/U0             |
+| lab/               |           | 75/99         | 89/123        | 175/220       | 0/1           | 0/0       | 0/0     | 1/1   | 0/0   | 0/0   | 0/0   | 0/0       | lab                |
+| +U0                |           | 15/15         | 16/16         | 34/34         | 1/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | lab/U0             |
 | +led               |           | 9/9           | 18/18         | 11/11         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0       | lab/led            |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
