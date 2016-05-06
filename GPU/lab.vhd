@@ -29,6 +29,22 @@ architecture Behavioral of lab is
            ledvalue : in  STD_LOGIC_VECTOR (15 downto 0));
   end component;
 
+	--CPU component insignaler
+ -- component CPU
+	--port ( clk,rst	: in std_logic; 
+		--playerPos	: in integer range 121 to 339;		-- Spelarens position
+		--boardSprites : in is array (0 to 10) of STD_LOGIC_VECTOR(19 downto 0); --sprites på skärmen
+
+--);
+	--end component;
+
+--bana1: sprite1 - posY = 1, tid= 1, sprite 2 ; sprite2 - posY = 3, tid=1 ... sprite(n) - posy = tid;
+ --boardSprites(ele1,ele2,ele3,ele4..ele10) ; ele1= x=40, y=50, sprite=fårnudda 
+
+
+--						 x				y			  sprite
+--binärt tal av 4 bitar. 0000 0000 00 - 0000 0000 0 - 0
+
     --PS2 keyboard encoder component
   component KBD_ENC
     port ( clk		        : in std_logic;				-- system clock
@@ -85,6 +101,12 @@ architecture Behavioral of lab is
   signal turnaround : std_logic := '0';
   signal video : std_logic;
   signal boxctr : std_logic_vector(19 downto 0) := X"00000";
+
+--------------------------signaler----------------cpdw----------
+signal spriteXPos : std_logic_vector(9 downto 0);
+signal spriteYPos : std_logic_vector(8 downto 0);
+signal spriteType : std_logic_vector(0);
+----------------------------------------------------
 
 begin
   process(clk) begin
@@ -155,6 +177,34 @@ begin
 			else	
 			    hej <= "00000000";
 			end if;
+-------------------RITA-UPP-SPRITES--------------------c-p-d-w--------
+	--process(clk) begin
+		--if rising_edge(clk) then
+			--for i in boardSprites' range loop
+				--spriteXPos <= boardSprites(i)(19 downto 10);  -- xpos for sprite
+				--spriteYPos <= boardSprites(i)(9 downto 1);   -- ypos for sprite
+				--spriteType <= boardSprites(i)(0 downto 0);   -- garattnuddasprite = 1 = gron, garinteattnuddasprite = 0 = rod
+				--if xctr >=spriteXPos and xctr< spriteXPos+20 and yctr >= spriteYPos and yctr < spriteYPos+20 then    --rita upp sprite
+				--	if spriteType = "1" then
+					--	hej <= x"00011100";      -- gron
+					--elsif spriteType = "0" then
+					--	hej <= x"11100000";     -- rod
+					--end if;
+				--end if;
+		--end if;	
+----------------------------------------------------------------------
+
+-----------------------------RITA-UPP-PLAYER-----------c-p-d-w-------
+	--process(clk) begin
+		--if rising_edge(clk) then
+			--if xctr>=60 and xctr<80 and yctr>=playerPos and yctr< playerPos+20 -- rita upp player
+				--hej <= x"00000011";    --blå
+			--end if;
+		--end if;	
+---------------------------------------------------------------------
+
+
+
 		--------------------------------------------
 		-------------------SPELARE-----------------------
 			if xctr>60 and xctr<80 and yctr<ypos+20 and yctr>ypos then
@@ -173,7 +223,7 @@ begin
   end process;
   vgaRed(2 downto 0) <= hej(7 downto 5);
   vgaGreen(2 downto 0) <= hej(4 downto 2);
-  vgaBlue(2 downto 1) <= hej(1 downto 0);
+  vgaBlue(2 downto 1) <= hej(1 downto 0);w
 
  ----************** KOD FÖR ATT FLYTTA PÅ SPELAREN VARIABLAR OCH GREJER *******************--------
   process(clk) begin
@@ -241,7 +291,8 @@ begin
   
 
   U0 : KBD_ENC port map(clk=>clk, rst=>rst, PS2KeyboardCLK=>PS2KeyboardCLK, PS2KeyboardData=>PS2KeyboardData, data=>data_s, addr=>addr_s, we=>we_s);
- -- U1 : PICT_MEM port map(clk=>clk, we1=>we_s, data_in1=>data_s, addr1=>addr_s, we2=>'0', data_in2=>"00000000", data_out2=>data_out2_s, addr2=>addr2_s);     
+ -- U1 : PICT_MEM port map(clk=>clk, we1=>we_s, data_in1=>data_s, addr1=>addr_s, we2=>'0', data_in2=>"00000000", data_out2=>data_out2_s, addr2=>addr2_s);
+--CPU : CPU(playerPos=>playerPos, boardSprites<=boardSprites);     
   led: leddriver port map (clk,rst,ca,cb,cc,cd,ce,cf,cg,dp,an, ctr);
 end Behavioral;
 

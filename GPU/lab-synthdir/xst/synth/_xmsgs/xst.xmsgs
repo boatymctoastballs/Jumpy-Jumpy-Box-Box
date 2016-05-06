@@ -5,136 +5,13 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="info" file="Xst" num="3010" delta="old" >&quot;<arg fmt="%s" index="1">/edu/danpe419/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd</arg>&quot; line <arg fmt="%d" index="2">243</arg>: Output port &lt;<arg fmt="%s" index="3">addr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">U0</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="error" file="HDLCompiler" num="258" delta="old" >"/edu/danpe419/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 108: Cannot convert type <arg fmt="%s" index="1"> universal_integer</arg> to type <arg fmt="%s" index="2">std_logic_vector</arg>
 </msg>
 
-<msg type="info" file="Xst" num="3010" delta="old" >&quot;<arg fmt="%s" index="1">/edu/danpe419/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd</arg>&quot; line <arg fmt="%d" index="2">243</arg>: Output port &lt;<arg fmt="%s" index="3">we</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">U0</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="error" file="HDLCompiler" num="806" delta="old" >"/edu/danpe419/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 229: Syntax error near &quot;<arg fmt="%s" index="1">process</arg>&quot;.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">rst</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-</msg>
-
-<msg type="info" file="Xst" num="1767" delta="old" >HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
-</msg>
-
-<msg type="info" file="Xst" num="3048" delta="old" >The small RAM &lt;<arg fmt="%s" index="1">Mram_v[3]_GND_9_o_wide_mux_2_OUT</arg>&gt; will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
-</msg>
-
-<msg type="info" file="Xst" num="3048" delta="old" >The small RAM &lt;<arg fmt="%s" index="1">Mram_counter_r[17]_PWR_11_o_wide_mux_3_OUT</arg>&gt; will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">PS2Data_sr_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">ctr_8</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_9</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_10</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_11</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_12</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_13</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_14</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_15</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT1_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">KBD_ENC</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1895" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">KBD_ENC</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">hej_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;hej_3&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">hej_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;hej_1&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">hej_5</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;hej_6&gt; &lt;hej_7&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">curposX_5</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT1_1&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">curposX_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT1_6&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">curposY_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT_5&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">curposX_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT1_5&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">curposY_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT_4&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">curposX_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT1_4&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">curposY_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT_3&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">curposX_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT1_3&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">curposY_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT_2&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">curposX_4</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT1_2&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">curposY_4</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Maddsub_PWR_8_o_curposY[4]_MuLt_101_OUT_1&gt; </arg>
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/WRstate_FSM_FFd1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/WRstate_FSM_FFd2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/curposY_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/curposY_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/curposY_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/curposY_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/curposY_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/curposX_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/curposX_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/curposX_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/curposX_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/curposX_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/curposX_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
+<msg type="error" file="HDLCompiler" num="854" delta="old" >"/edu/danpe419/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 24: Unit &lt;<arg fmt="%s" index="1">behavioral</arg>&gt; ignored due to previous errors.
 </msg>
 
 </messages>
