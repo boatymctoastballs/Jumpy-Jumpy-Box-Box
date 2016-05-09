@@ -266,8 +266,7 @@ begin
   --addr <= "00000000001" when (PS2state = BREAK);
   
   -- data output is set to be x"1F" (cursor tile index) during WRCUR state, otherwise set as scan code tile index
-  --data <= x"FF" when (PS2state = IDLE) else TileIndex;
-	data <= TileIndex when (PS2state = MAKE) else x"FF";
+  data <= x"FF" when (PS2state = IDLE) else TileIndex;
 
   
 end behavioral;

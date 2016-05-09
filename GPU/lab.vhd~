@@ -101,11 +101,11 @@ architecture Behavioral of lab is
   signal turnaround : std_logic := '0';
   signal video : std_logic;
   signal boxctr : std_logic_vector(19 downto 0) := X"00000";
-
+  signal ducka : std_logic := '0';
 --------------------------signaler----------------cpdw----------
 signal spriteXPos : std_logic_vector(9 downto 0);
 signal spriteYPos : std_logic_vector(8 downto 0);
-signal spriteType : std_logic_vector(0);
+signal spriteType : std_logic := '0';
 ----------------------------------------------------
 
 begin
@@ -177,6 +177,27 @@ begin
 			else	
 			    hej <= "00000000";
 			end if;
+		--------------------------------------------
+		-------------------SPELARE-----------------------
+			if xctr>60 and xctr<80 and yctr<ypos+20 and yctr>ypos+10 and ducka = '1' then
+				hej <= x"0F";
+			elsif xctr>60 and xctr<80 and yctr<ypos+20 and yctr>ypos and ducka = '0' then
+				hej <= x"0F";
+			end if;
+		---------------------------------------------------
+		-------------------LÅDA---------------------------
+			if xctr>boxpos and xctr<boxpos+20 and yctr>339 and yctr<359 then
+				hej <= "11111111";
+			end if;
+		end if;
+	 else
+		hej <= "00000000";
+  	 end if;
+    end if;
+  end process;
+
+
+
 -------------------RITA-UPP-SPRITES--------------------c-p-d-w--------
 	--process(clk) begin
 		--if rising_edge(clk) then
@@ -186,9 +207,9 @@ begin
 				--spriteType <= boardSprites(i)(0 downto 0);   -- garattnuddasprite = 1 = gron, garinteattnuddasprite = 0 = rod
 				--if xctr >=spriteXPos and xctr< spriteXPos+20 and yctr >= spriteYPos and yctr < spriteYPos+20 then    --rita upp sprite
 				--	if spriteType = "1" then
-					--	hej <= x"00011100";      -- gron
+					--	hej <= "00011100";      -- gron
 					--elsif spriteType = "0" then
-					--	hej <= x"11100000";     -- rod
+					--	hej <= "11100000";     -- rod
 					--end if;
 				--end if;
 		--end if;	
@@ -204,26 +225,9 @@ begin
 ---------------------------------------------------------------------
 
 
-
-		--------------------------------------------
-		-------------------SPELARE-----------------------
-			if xctr>60 and xctr<80 and yctr<ypos+20 and yctr>ypos then
-				hej <= x"0F";
-			end if;
-		---------------------------------------------------
-		-------------------LÅDA---------------------------
-			if xctr>boxpos and xctr<boxpos+20 and yctr>339 and yctr<359 then
-				hej <= "11111111";
-			end if;
-		end if;
-	 else
-		hej <= "00000000";
-  	 end if;
-    end if;
-  end process;
   vgaRed(2 downto 0) <= hej(7 downto 5);
   vgaGreen(2 downto 0) <= hej(4 downto 2);
-  vgaBlue(2 downto 1) <= hej(1 downto 0);w
+  vgaBlue(2 downto 1) <= hej(1 downto 0);
 
  ----************** KOD FÖR ATT FLYTTA PÅ SPELAREN VARIABLAR OCH GREJER *******************--------
   process(clk) begin
@@ -232,21 +236,27 @@ begin
 			--if ypos = 339 then
 				-- knapp <= '0';
 			--end if;
+			if data_s = x"01" then
+				 ducka <= '1';
+			end if;
+			if knapp = '1' then
+				 ducka <= '0';
+			end if;
 			if data_s = x"00" then
 				 knapp <= '1';
 			end if;
-			if ypos = 250 then
+			if ypos = 290 then
 				turnaround <= '1';
 			end if;
 			if knapp = '1' then
-				if jumpctr = 0 and turnaround = '0' and ypos<=270  then
+				if jumpctr = 0 and turnaround = '0' and ypos<= 295  then
 					ypos <= ypos-1;
-				elsif jumpctr = 0 and turnaround = '1' and ypos>=250 and ypos <= 270  then
+				elsif jumpctr = 0 and turnaround = '1' and ypos <= 295  then
 					ypos <= ypos+1;
 
-				elsif (jumpctr = 0 or jumpctr = x"7FFF") and turnaround = '0' and ypos >= 270 then
+				elsif (jumpctr = 0 or jumpctr = x"7FFF") and turnaround = '0' and ypos >= 295 then
 					ypos <= ypos-1;
-				elsif (jumpctr = 0 or jumpctr = x"7FFF") and turnaround = '1'  and ypos >= 270 then
+				elsif (jumpctr = 0 or jumpctr = x"7FFF") and turnaround = '1'  and ypos >= 295 then
 					ypos <= ypos+1;
 					if ypos = 339 then
 					 	knapp <= '0';
@@ -262,6 +272,8 @@ begin
 		 end if;
  end process;
   --(jumpctr = 0 or jumpctr = x"7FFF")
+
+
 -----*********************LÅDA SOM KOMMER FRÅN HÖGER SOM VI SKA DODGEA***********-----------
   process(clk) begin
 		if rising_edge(clk) then
