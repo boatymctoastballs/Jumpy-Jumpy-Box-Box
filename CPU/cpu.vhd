@@ -11,7 +11,8 @@ entity CPU is
 	--RST : in  STD_LOGIC;
 	--btnu : in std_logic;
 	--mem : out std_logic_vector(15 downto 0);
-	boxYpos : integer 121 to 339 := "101010011";
+	playerPos : out integer range 121 to 339 := "101010011";
+	boardSprites : out is array (0 to 10) of std_logic_vector(19 downto 0);
     );
 end entity;
 architecture rtl of CPU is
@@ -27,45 +28,74 @@ architecture rtl of CPU is
     signal GR3_REG : STD_LOGIC_VECTOR(15 downto 0) := X"0000";
     
     -- PM/RAM och MyM
-    type ram_type is array (0 to 15) of std_logic_vector(15 downto 0);
-    type mram_type is array (0 to 13) of std_logic_vector(24 downto 0);
+    type ram_type is array (0 to 15) of std_logic_vector(15 downto 0); --inte 15, beror på hur stort programmet blir
+    type mram_type is array (0 to 36) of std_logic_vector(24 downto 0);
 
     signal ram : ram_type := (
-    -- Programkod
-    X"5400", X"6800", X"7000", X"8000",
-    X"0000", X"0000", X"0000", X"0000", 
-    X"0000", X"0000", X"0000", X"0000", 
-    X"0000", X"0000", X"0000", X"0000");
+
 
     constant mram : mram_type := (
 --    ALU     TB      FB      S     P     LC     SEQ       myADR      
-    "0000" & "011" & "111" & "0" & "00" & "0" & "0000" & "0000000", --0x00 -- Ladda nästa PM
-    "0000" & "010" & "001" & "0" & "00" & "0" & "0000" & "0000000", --0x01
-    "0000" & "000" & "000" & "0" & "00" & "0" & "0010" & "0000000", --0x02
-    "0000" & "001" & "111" & "0" & "00" & "0" & "0001" & "0000000", --0x03 -- indexeringsmetod
-    "0000" & "000" & "000" & "0" & "00" & "0" & "0000" & "0000000", --0x04
-    "0000" & "010" & "110" & "0" & "01" & "0" & "0011" & "0000000", --0x05 - Load
-    "0000" & "110" & "010" & "0" & "01" & "0" & "0011" & "0000000", --0x06 - Store
-    "0001" & "110" & "000" & "0" & "00" & "0" & "0000" & "0000000", --0x07 - Add
-    "0100" & "010" & "000" & "0" & "00" & "0" & "0000" & "0000000", --0x08
-    "0000" & "100" & "110" & "0" & "01" & "0" & "0011" & "0000000", --0x09
-    "0001" & "110" & "000" & "0" & "00" & "0" & "0000" & "0000000", --0x0A - Sub
-    "0101" & "010" & "000" & "0" & "00" & "0" & "0000" & "0000000", --0x0B
-    "0000" & "100" & "110" & "0" & "01" & "0" & "0011" & "0000000", --0x0C
-    "0000" & "001" & "111" & "0" & "11" & "0" & "0011" & "0000000", --0x0D -- JMP
+    "0000" & "011" & "111" & "0" & "0" & "00" & "0000" & "0000000", --0x00 PC => ASR, mpc++,  			(HÄMTFAS)
+    "0000" & "010" & "001" & "0" & "0" & "00" & "0000" & "0000000", --0x01 PM => IR, mpc++ 
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0010" & "0000000", --0x02 K1 => mpc
+    "0000" & "001" & "111" & "0" & "0" & "00" & "0001" & "0000000", --0x03 IR => ASR, K2 => mpc
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x04
+    "0000" & "010" & "110" & "0" & "1" & "00" & "0011" & "0000000", --0x05 PM => GRx, mpc = 0,  	        (LOAD)
+    "0000" & "110" & "010" & "0" & "1" & "00" & "0011" & "0000000", --0x06 GRx => PM, mpc = 0,                  (STORE)
+    "0001" & "110" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x07 Grx => AR, mpc++,                    (ADD)
+    "1000" & "010" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x08 (AR + PM) => AR, mpc++
+    "0000" & "100" & "110" & "0" & "1" & "00" & "0011" & "0000000", --0x09 AR => GRx, PC++, mpc = 0
+    "0001" & "110" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x0A Grx => AR, mpc++,                    (SUB)
+    "0101" & "010" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x0B (AR - PM) => AR, mpc++
+    "0000" & "100" & "110" & "0" & "1" & "00" & "0011" & "0000000", --0x0C AR => GRx, PC++, mpc = 0
+    "0001" & "010" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x0D PM => AR, mpc++,                     (LSR)
+    "1110" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x0E (AR LSR 1) => AR , mpc++
+    "0000" & "100" & "010" & "0" & "1" & "00" & "0011" & "0000000", --0x0F AR => PM, PC++, mpc = 0
+--    ALU     TB      FB      S     P     LC     SEQ       myADR      
+    "0000" & "010" & "011" & "0" & "0" & "00" & "0011" & "0000000", --0x10 PM => PC, mpc = 0                    (JMP)
+    "0000" & "001" & "111" & "0" & "0" & "00" & "1011" & "0010000", --0x11 IF flagga = 1 then mpc++ else mpc =>myADR(RESET)
+    "0100" & "000" & "000" & "0" & "1" & "00" & "0011" & "0000000", --0x12 ALU RESET MAGIC, PC++, mpc = 0
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x13 
+    "0001" & "110" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x14 GRx => AR, mpc++                     (AND)
+    "0010" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x15 ALU magic, mp++
+    "0000" & "100" & "110" & "0" & "1" & "00" & "0011" & "0000000", --0x16 AR => GRx, PC++, mpc = 0
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0011" & "0000000", --0x17 mpc = 0                              (NOP)
+    "0000" & "001" & "111" & "0" & "0" & "00" & "1000" & "0010000", --0x18 IF flagga = 1 then mpc++ else mpc =>myADR (BNE)
+    "0000" & "000" & "000" & "0" & "1" & "00" & "0011" & "0000000", --0x19 PC++, mpc = 0
+
+--    ALU     TB      FB      S     P    LC      SEQ       myADR       
+    "1111" & "010" & "000" & "0" & "1" & "00" & "0011" & "0000000", --0x1A BTST PM, PC++, mpc = 0               (BTST)
+    "0000" & "001" & "111" & "0" & "0" & "00" & "1001" & "0010000", --0x1B IF z = 1 then mpc++ else mpc=>myADR  (BNE)
+    "0000" & "000" & "000" & "0" & "1" & "00" & "0011" & "0000000", --0x1C PC++, mpc = 0
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x1D 
+    "1101" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x1E Alu magic => AR, mpc ++
+    "0000" & "100" & "010" & "0" & "1" & "00" & "0011" & "0000000", --0x1F AR => PM, PC++, mpc = 0
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x20 
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x21 
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x22 
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x23
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x24
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x25 
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000"  --0x26
     );
     
     -- K1 och K2
-    type k1_type is array(0 to 5) of std_logic_vector(7 downto 0);
+    type k1_type is array(0 to 10) of std_logic_vector(7 downto 0);
     type k2_type is array(0 to 3) of std_logic_vector(7 downto 0);
 
     constant k1 : k1_type := (
-    X"00", -- NOP
-    X"05", -- Load	1
-    X"06", -- Store	2
-    X"07", -- Add	3
-    X"0A", -- Sub	4
-    X"13", -- JMP       8
+    X"00", -- NOP    0x00
+    X"05", -- LOAD   0x01
+    X"06", -- STORE  0x02   
+    X"07", -- ADD    0x03
+    X"0A", -- SUB    0x04
+    X"0D", -- LSR    0x05
+    X"10", -- JMP    0x06
+    X"11", -- RST    0x07
+    X"14", -- AND    0x08
+    X"1A", -- BTST   0x09
+    X"1B", -- BNE    0x0A
     );
     constant k2 : k2_type := (
     X"03",
@@ -74,7 +104,86 @@ architecture rtl of CPU is
     X"00"
     );
 
-   
+----------banor----------------------------c-p-d-w-----------------
+	
+	--bana1
+	type bana1_type is array(0 to 1) of std_logic_vector(17 downto 0);
+	
+	constant bana1 : bana1_type := (
+--	ypos	     tid       spritetyp		
+	"1010 1001 1 0000 0000 0",
+	"1001 0101 1 1111 0000 0",		
+	);
+
+-- ypos        	 tid	   spritetyp
+-- 0000 0000 0 - 0000 0000 0
+
+--------------------------------------------------------------------
+
+-----------board-sprites-----------------c-p-d-w--------------------
+--ar det okej att ha en tom array??--
+
+	process(CLK) begin
+		if rising_edge(CLK) then			
+			if bana1(i)(8 downto 1) = CLK
+				for i in boardSprites(9 downto 0) loop
+					boardSprites(i) <= boardSprites(i+1)
+				end loop;	
+--							    xpos(10bitar)  ypos(9bitar)		spritetyp
+				boardSprites(10) = "1001 1111 11" + bana1(i)(17 downto 9) + bana1(i)(0 downto 0);		
+			end if;	 	
+		end if;
+	end process;
+
+	process(CLK) begin
+		if rising_edge(CLK) then
+			for i in boardSprites loop
+				if boardSprites(19 downto 10) = (-)"0000 0101 00" then -- (-20) 
+					boardSprites(i) = "0000 0000 0000 0000 0000";
+				end if;
+			end loop;
+		end if;
+	end process;
+
+---------------------------------------------------------------------
+
+
+------------------------------SPRITES--------------------------------
+	signal color_type is array (0 to 7) of std_logic_vector(7 downto 0);
+	signal colors : color_type := (
+	"000 000 00", --black	000
+	"111 111 11", --white	001
+	"110 000 00", --red	010
+	"000 111 00", --green	011
+	"000 000 11", --blue	100
+	);
+
+	signal playerSprite is array (0 to 19) of std_logic_vector(19 downto 0);
+	--signal playerSprite2 : array_type_20x20; 
+	
+	playerSprite(0) <= "1111 1111 1111 1111 1111";	
+	playerSprite(1) <= "1111 1111 1111 1111 1111";
+	playerSprite(2) <= "1111 1111 1111 1111 1111";
+	playerSprite(3) <= "1111 1111 1111 1111 1111";
+	playerSprite(4) <= "1111 1111 1111 1111 1111";
+	playerSprite(5) <= "1111 1111 1111 1111 1111";
+	playerSprite(6) <= "1111 1111 1111 1111 1111";
+	playerSprite(7) <= "1111 1111 1111 1111 1111";
+	playerSprite(8) <= "1111 1111 1111 1111 1111";
+	playerSprite(9) <= "1111 1111 1111 1111 1111";
+	playerSprite(10) <= "1111 1111 1111 1111 1111";
+	playerSprite(11) <= "1111 1111 1111 1111 1111";
+	playerSprite(12) <= "1111 1111 1111 1111 1111";
+	playerSprite(13) <= "1111 1111 1111 1111 1111";
+	playerSprite(14) <= "1111 1111 1111 1111 1111";
+	playerSprite(15) <= "1111 1111 1111 1111 1111";
+	playerSprite(16) <= "1111 1111 1111 1111 1111";
+	playerSprite(17) <= "1111 1111 1111 1111 1111";
+	playerSprite(18) <= "1111 1111 1111 1111 1111";
+	playerSprite(19) <= "1111 1111 1111 1111 1111";
+
+
+
     -- Interna signaler
     signal buss : std_logic_vector(15 downto 0) := X"0000";
     signal mux : std_logic_vector(1 downto 0) := "00"; --Mux för de 4 GR register
@@ -83,7 +192,7 @@ architecture rtl of CPU is
     signal myPC : STD_LOGIC_VECTOR(7 downto 0) := X"00";
     signal myM : std_logic_vector(24 downto 0);
     -- Mym operatorer
-    signal ALU_OP : std_logic_vector(3 downto 0) := "0000"; --Bestmmer operator i ALU
+    signal ALU_OP : std_logic_vector(3 downto 0) := "0000"; --Bestammer operator i ALU
     signal TB : std_logic_vector(2 downto 0) := "000";
     signal FB : std_logic_vector(2 downto 0) := "000";
     signal S : std_logic;
@@ -92,9 +201,7 @@ architecture rtl of CPU is
     signal SEQ : std_logic_vector(3 downto 0);
     signal myADR : std_logic_vector(6 downto 0) := "0000000";
 
-    --Player
-    signal velocityY : integer 0 to 7 := "000";
-    
+  
 
     
 begin
