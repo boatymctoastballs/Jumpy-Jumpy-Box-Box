@@ -256,7 +256,7 @@ begin
 
 				elsif (jumpctr = 0 or jumpctr = x"7FFF") and turnaround = '0' and ypos >= 295 then
 					ypos <= ypos-1;
-				elsif (jumpctr = 0 or jumpctr = x"7FFF") and turnaround = '1'  and ypos >= 295 then
+				elsif (jumpctr = 0 or jumpctr = x"7FFF") and turnaround = '1' and ypos >= 295 then
 					ypos <= ypos+1;
 					if ypos = 339 then
 					 	knapp <= '0';

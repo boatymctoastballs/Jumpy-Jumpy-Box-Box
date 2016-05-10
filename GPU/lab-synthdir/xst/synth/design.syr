@@ -4,8 +4,8 @@ Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to tmpdir
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 0.14 secs
  
 --> 
 
@@ -197,10 +197,10 @@ WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and lef
 	inferred  29 D-type flip-flop(s).
 	inferred   4 Multiplexer(s).
 Unit <leddriver> synthesized.
-RTL-Simplification CPUSTAT: 0.12 
+RTL-Simplification CPUSTAT: 0.13 
 RTL-BasicInf CPUSTAT: 0.22 
-RTL-BasicOpt CPUSTAT: 0.01 
-RTL-Remain-Bus CPUSTAT: 0.00 
+RTL-BasicOpt CPUSTAT: 0.00 
+RTL-Remain-Bus CPUSTAT: 0.01 
 
 =========================================================================
 HDL Synthesis Report
@@ -578,13 +578,13 @@ clk            |    5.813|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 6.22 secs
+Total REAL time to Xst completion: 11.00 secs
+Total CPU time to Xst completion: 6.47 secs
  
 --> 
 
 
-Total memory usage is 463824 kilobytes
+Total memory usage is 463828 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   15 (   0 filtered)
