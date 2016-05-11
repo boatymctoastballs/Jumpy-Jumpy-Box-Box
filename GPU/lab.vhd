@@ -95,6 +95,7 @@ architecture Behavioral of lab is
   --type ram_t is array (0 to 59) of std_logic_vector(0 to 79);
   signal hej : std_logic_vector(7 downto 0) := "00000000";
   signal jumpctr : std_logic_vector(19 downto 0) := X"00000";
+  signal PlayerPosX : std_logic_vector(15 downto 0) := std_logic_vector(to_unsigned(60, 16));
   signal ypos : std_logic_vector(15 downto 0) := std_logic_vector(to_unsigned(339, 16));
   signal boxpos : std_logic_vector(15 downto 0) := std_logic_vector(to_unsigned(619, 16));
   signal knapp : std_logic := '0';
@@ -102,10 +103,11 @@ architecture Behavioral of lab is
   signal video : std_logic;
   signal boxctr : std_logic_vector(19 downto 0) := X"00000";
   signal ducka : std_logic := '0';
+  signal collision : std_logic := '0';
 --------------------------signaler----------------cpdw----------
-signal spriteXPos : std_logic_vector(9 downto 0);
-signal spriteYPos : std_logic_vector(8 downto 0);
-signal spriteType : std_logic := '0';
+  signal spriteXPos : std_logic_vector(9 downto 0);
+  signal spriteYPos : std_logic_vector(8 downto 0);
+  signal spriteType : std_logic := '0';
 ----------------------------------------------------
 
 begin
@@ -179,23 +181,39 @@ begin
 			end if;
 		--------------------------------------------
 		-------------------SPELARE-----------------------
-			if xctr>60 and xctr<80 and yctr<ypos+20 and yctr>ypos+10 and ducka = '1' then
+			if xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<ypos+20 and yctr>ypos+10 and ducka = '1' then
 				hej <= x"0F";
-			elsif xctr>60 and xctr<80 and yctr<ypos+20 and yctr>ypos and ducka = '0' then
+			elsif xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<ypos+20 and yctr>ypos and ducka = '0' then
 				hej <= x"0F";
 			end if;
 		---------------------------------------------------
 		-------------------LÅDA---------------------------
-			if xctr>boxpos and xctr<boxpos+20 and yctr>339 and yctr<359 then
-				hej <= "11111111";
+			if boxpos+20>=PlayerPosX and boxpos<=PlayerPosX+20 and ypos > 319 then	
+				collision <= '1';
+			else
+				collision <= '0';
 			end if;
+			--if xctr<=PlayerPosX and xctr>=PlayerPosX+20 then
+				--collision <= '0';
+			--end if;
+
+			if xctr>boxpos and xctr<boxpos+20 and yctr>339 and yctr<359 then
+				if collision = '1' then
+					hej <= "11100000";
+				else
+					hej <= "11111111";
+				end if;
+			--elsif xctr>boxpos and xctr<boxpos+20 and yctr>339 and yctr<359 and collision = '0' then
+				--hej <= "11111111";
+			end if;
+			--elsif xctr>boxpos and xctr<boxpos+20 and yctr>339 and yctr<359 then
+				--hej <= "11111111";
 		end if;
 	 else
 		hej <= "00000000";
-  	 end if;
+  	 end if; 
     end if;
   end process;
-
 
 
 -------------------RITA-UPP-SPRITES--------------------c-p-d-w--------

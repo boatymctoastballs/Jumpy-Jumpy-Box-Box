@@ -11,10 +11,10 @@
 <msg type="warning" file="HDLCompiler" num="1127" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../KBD_ENC.vhd" Line 212: Assignment to <arg fmt="%s" index="1">curmovement</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="info" file="Xst" num="3010" delta="new" >&quot;<arg fmt="%s" index="1">/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd</arg>&quot; line <arg fmt="%d" index="2">323</arg>: Output port &lt;<arg fmt="%s" index="3">addr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">U0</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3010" delta="old" >&quot;<arg fmt="%s" index="1">/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd</arg>&quot; line <arg fmt="%d" index="2">319</arg>: Output port &lt;<arg fmt="%s" index="3">addr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">U0</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3010" delta="new" >&quot;<arg fmt="%s" index="1">/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd</arg>&quot; line <arg fmt="%d" index="2">323</arg>: Output port &lt;<arg fmt="%s" index="3">we</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">U0</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3010" delta="old" >&quot;<arg fmt="%s" index="1">/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd</arg>&quot; line <arg fmt="%d" index="2">319</arg>: Output port &lt;<arg fmt="%s" index="3">we</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">U0</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">addr</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
@@ -59,17 +59,10 @@
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">hej_5</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;hej_6&gt; &lt;hej_7&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">hej_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;hej_1&gt; </arg>
-</msg>
-
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">hej_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;hej_3&gt; </arg>
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/WRstate_FSM_FFd1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/WRstate_FSM_FFd2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">hej_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;hej_1&gt; </arg>
 </msg>
 
 </messages>
-

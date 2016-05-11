@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map M.81d on Tue May 10 10:33:54 2016
+// Written by: Map M.81d on Wed May 11 16:44:21 2016
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -29,42 +29,42 @@ COMP "vgaGreen<1>" LOCATE = SITE "T6" LEVEL 1;
 COMP "vgaGreen<2>" LOCATE = SITE "V6" LEVEL 1;
 COMP "vgaBlue<1>" LOCATE = SITE "R7" LEVEL 1;
 COMP "vgaBlue<2>" LOCATE = SITE "T7" LEVEL 1;
-TIMEGRP sys_clk_pin = BEL "ctr_0" BEL "ctr_1" BEL "ctr_2" BEL "ctr_3" BEL
-        "ctr_4" BEL "ctr_5" BEL "ctr_6" BEL "ctr_7" BEL "ypos_0" BEL "ypos_1"
-        BEL "ypos_2" BEL "ypos_3" BEL "ypos_4" BEL "ypos_5" BEL "ypos_6" BEL
-        "ypos_7" BEL "ypos_8" BEL "ypos_9" BEL "ypos_10" BEL "ypos_11" BEL
-        "ypos_12" BEL "ypos_13" BEL "ypos_14" BEL "ypos_15" BEL "jumpctr_0"
-        BEL "jumpctr_1" BEL "jumpctr_2" BEL "jumpctr_3" BEL "jumpctr_4" BEL
-        "jumpctr_5" BEL "jumpctr_6" BEL "jumpctr_7" BEL "jumpctr_8" BEL
-        "jumpctr_9" BEL "jumpctr_10" BEL "jumpctr_11" BEL "jumpctr_12" BEL
-        "jumpctr_13" BEL "jumpctr_14" BEL "jumpctr_15" BEL "jumpctr_16" BEL
-        "jumpctr_17" BEL "jumpctr_18" BEL "jumpctr_19" BEL "pixel_0" BEL
-        "pixel_1" BEL "xctr_2" BEL "xctr_1" BEL "xctr_5" BEL "xctr_3" BEL
-        "xctr_4" BEL "xctr_6" BEL "xctr_7" BEL "xctr_8" BEL "xctr_9" BEL
-        "yctr_1" BEL "yctr_4" BEL "yctr_2" BEL "yctr_3" BEL "yctr_5" BEL
-        "yctr_6" BEL "yctr_9" BEL "yctr_7" BEL "yctr_8" BEL "boxpos_2" BEL
-        "boxpos_4" BEL "boxpos_8" BEL "boxpos_9" BEL "boxpos_10" BEL
-        "boxpos_13" BEL "boxpos_11" BEL "boxpos_12" BEL "boxpos_14" BEL
-        "boxpos_15" BEL "xctr_0" BEL "yctr_0" BEL "U0/PS2BitCounter_3" BEL
-        "U0/PS2BitCounter_2" BEL "U0/PS2BitCounter_1" BEL "U0/PS2BitCounter_0"
-        BEL "U0/PS2state_FSM_FFd1" BEL "U0/PS2state_FSM_FFd2" BEL
-        "U0/PS2Data_sr_7" BEL "U0/PS2Data_sr_6" BEL "U0/PS2Data_sr_5" BEL
-        "U0/PS2Data_sr_4" BEL "U0/PS2Data_sr_3" BEL "U0/PS2Data_sr_2" BEL
-        "U0/PS2Data_sr_1" BEL "U0/PS2Clk_Q1" BEL "U0/PS2Clk" BEL "U0/PS2Data"
-        BEL "U0/PS2Clk_Q2" BEL "led/counter_r_17" BEL "led/counter_r_16" BEL
-        "led/counter_r_15" BEL "led/counter_r_14" BEL "led/counter_r_13" BEL
-        "led/counter_r_12" BEL "led/counter_r_11" BEL "led/counter_r_10" BEL
-        "led/counter_r_9" BEL "led/counter_r_8" BEL "led/counter_r_7" BEL
-        "led/counter_r_6" BEL "led/counter_r_5" BEL "led/counter_r_4" BEL
-        "led/counter_r_3" BEL "led/counter_r_2" BEL "led/counter_r_1" BEL
-        "led/counter_r_0" BEL "led/segments_6" BEL "led/segments_5" BEL
-        "led/segments_4" BEL "led/segments_3" BEL "led/segments_2" BEL
-        "led/segments_1" BEL "led/segments_0" BEL "led/an_3" BEL "led/an_2"
-        BEL "led/an_1" BEL "led/an_0" BEL "hs" BEL "vs" BEL "ducka" BEL
-        "hej_0" BEL "hej_2" BEL "hej_4" BEL "hej_5" BEL "boxpos_3" BEL
-        "boxpos_1" BEL "boxpos_5" BEL "boxpos_6" BEL "boxpos_7" BEL "boxpos_0"
-        BEL "knapp" BEL "turnaround" BEL "U0/PS2Data_sr_5_1" BEL
-        "clk_BUFGP/BUFG" BEL "U0/Mshreg_PS2Data_sr_8" BEL "U0/PS2Data_sr_8";
+TIMEGRP sys_clk_pin = BEL "collision" BEL "knapp" BEL "ctr_0" BEL "ctr_1" BEL
+        "ctr_2" BEL "ctr_3" BEL "ctr_4" BEL "ctr_5" BEL "ctr_6" BEL "ctr_7"
+        BEL "ypos_0" BEL "ypos_1" BEL "ypos_2" BEL "ypos_3" BEL "ypos_4" BEL
+        "ypos_5" BEL "ypos_6" BEL "ypos_7" BEL "ypos_8" BEL "ypos_9" BEL
+        "ypos_10" BEL "ypos_11" BEL "ypos_12" BEL "ypos_13" BEL "ypos_14" BEL
+        "ypos_15" BEL "jumpctr_0" BEL "jumpctr_1" BEL "jumpctr_2" BEL
+        "jumpctr_3" BEL "jumpctr_4" BEL "jumpctr_5" BEL "jumpctr_6" BEL
+        "jumpctr_7" BEL "jumpctr_8" BEL "jumpctr_9" BEL "jumpctr_10" BEL
+        "jumpctr_11" BEL "jumpctr_12" BEL "jumpctr_13" BEL "jumpctr_14" BEL
+        "jumpctr_15" BEL "jumpctr_16" BEL "jumpctr_17" BEL "jumpctr_18" BEL
+        "jumpctr_19" BEL "pixel_0" BEL "pixel_1" BEL "xctr_2" BEL "xctr_1" BEL
+        "xctr_5" BEL "xctr_3" BEL "xctr_4" BEL "xctr_6" BEL "xctr_7" BEL
+        "xctr_8" BEL "xctr_9" BEL "yctr_1" BEL "yctr_4" BEL "yctr_2" BEL
+        "yctr_3" BEL "yctr_5" BEL "yctr_6" BEL "yctr_9" BEL "yctr_7" BEL
+        "yctr_8" BEL "boxpos_2" BEL "boxpos_4" BEL "boxpos_8" BEL "boxpos_9"
+        BEL "boxpos_10" BEL "boxpos_13" BEL "boxpos_11" BEL "boxpos_12" BEL
+        "boxpos_14" BEL "boxpos_15" BEL "xctr_0" BEL "yctr_0" BEL
+        "U0/PS2BitCounter_3" BEL "U0/PS2BitCounter_2" BEL "U0/PS2BitCounter_1"
+        BEL "U0/PS2BitCounter_0" BEL "U0/PS2state_FSM_FFd1" BEL
+        "U0/PS2state_FSM_FFd2" BEL "U0/PS2Data_sr_7" BEL "U0/PS2Data_sr_6" BEL
+        "U0/PS2Data_sr_5" BEL "U0/PS2Data_sr_4" BEL "U0/PS2Data_sr_3" BEL
+        "U0/PS2Data_sr_2" BEL "U0/PS2Data_sr_1" BEL "U0/PS2Clk_Q1" BEL
+        "U0/PS2Clk" BEL "U0/PS2Data" BEL "U0/PS2Clk_Q2" BEL "led/counter_r_17"
+        BEL "led/counter_r_16" BEL "led/counter_r_15" BEL "led/counter_r_14"
+        BEL "led/counter_r_13" BEL "led/counter_r_12" BEL "led/counter_r_11"
+        BEL "led/counter_r_10" BEL "led/counter_r_9" BEL "led/counter_r_8" BEL
+        "led/counter_r_7" BEL "led/counter_r_6" BEL "led/counter_r_5" BEL
+        "led/counter_r_4" BEL "led/counter_r_3" BEL "led/counter_r_2" BEL
+        "led/counter_r_1" BEL "led/counter_r_0" BEL "led/segments_6" BEL
+        "led/segments_5" BEL "led/segments_4" BEL "led/segments_3" BEL
+        "led/segments_2" BEL "led/segments_1" BEL "led/segments_0" BEL
+        "led/an_3" BEL "led/an_2" BEL "led/an_1" BEL "led/an_0" BEL "hs" BEL
+        "vs" BEL "ducka" BEL "hej_0" BEL "hej_2" BEL "hej_4" BEL "hej_5" BEL
+        "boxpos_3" BEL "boxpos_1" BEL "boxpos_5" BEL "boxpos_6" BEL "boxpos_7"
+        BEL "boxpos_0" BEL "turnaround" BEL "clk_BUFGP/BUFG" BEL
+        "U0/Mshreg_PS2Data_sr_8" BEL "U0/PS2Data_sr_8";
 TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
 SCHEMATIC END;
 
