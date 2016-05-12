@@ -3,6 +3,23 @@ library IEEE;
     use IEEE.NUMERIC_STD.ALL;
     use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
+
+package types_package is
+
+		type pos_t is record		
+			x std_logic_vector(9 downto 0);
+			y std_logic_vector(8 downto 0);
+		end record;
+	
+		type sprite_t is record
+			pos : pos_t;
+			spriteType : std_logic := '0';
+		end record;
+		
+		type boardSprites_t is array (0 to 10) of sprite_t;
+	
+end package	
+
 entity CPU is
     Port ( 
         CLK : in  STD_LOGIC;

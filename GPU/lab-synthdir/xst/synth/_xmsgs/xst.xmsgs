@@ -5,70 +5,61 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="871" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 98: Using initial value <arg fmt="%s" index="1">(&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;1&apos;,&apos;1&apos;,&apos;1&apos;,&apos;1&apos;,&apos;0&apos;,&apos;0&apos;)</arg> for <arg fmt="%s" index="2">playerposx</arg> since it is never assigned
+<msg type="error" file="HDLCompiler" num="69" delta="new" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 22: &lt;<arg fmt="%s" index="1">boardsprites_t</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../KBD_ENC.vhd" Line 212: Assignment to <arg fmt="%s" index="1">curmovement</arg> ignored, since the identifier is never used
+<msg type="error" file="HDLCompiler" num="854" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 14: Unit &lt;<arg fmt="%s" index="1">lab</arg>&gt; ignored due to previous errors.
 </msg>
 
-<msg type="info" file="Xst" num="3010" delta="new" >&quot;<arg fmt="%s" index="1">/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd</arg>&quot; line <arg fmt="%d" index="2">323</arg>: Output port &lt;<arg fmt="%s" index="3">addr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">U0</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="error" file="HDLCompiler" num="374" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 25: Entity &lt;<arg fmt="%s" index="1">lab</arg>&gt; is not yet compiled.
 </msg>
 
-<msg type="info" file="Xst" num="3010" delta="new" >&quot;<arg fmt="%s" index="1">/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd</arg>&quot; line <arg fmt="%d" index="2">323</arg>: Output port &lt;<arg fmt="%s" index="3">we</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">U0</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 27: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">addr</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 28: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">rst</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 29: &lt;<arg fmt="%s" index="1">std_logic_vector</arg>&gt; is not declared.
 </msg>
 
-<msg type="info" file="Xst" num="3048" delta="old" >The small RAM &lt;<arg fmt="%s" index="1">Mram_v[3]_GND_8_o_wide_mux_2_OUT</arg>&gt; will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 30: &lt;<arg fmt="%s" index="1">std_logic_vector</arg>&gt; is not declared.
 </msg>
 
-<msg type="info" file="Xst" num="3048" delta="old" >The small RAM &lt;<arg fmt="%s" index="1">Mram_counter_r[17]_PWR_9_o_wide_mux_3_OUT</arg>&gt; will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 51: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">PS2Data_sr_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">KBD_ENC</arg>&gt;.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 52: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">ctr_8</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 53: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_9</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 54: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_10</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 55: &lt;<arg fmt="%s" index="1">std_logic_vector</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_11</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 56: &lt;<arg fmt="%s" index="1">unsigned</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_12</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 57: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_13</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 61: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_14</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 63: &lt;<arg fmt="%s" index="1">std_logic</arg>&gt; is not declared.
 </msg>
 
-<msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">ctr_15</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lab</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 64: &lt;<arg fmt="%s" index="1">std_logic_vector</arg>&gt; is not declared.
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">hej_5</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;hej_6&gt; &lt;hej_7&gt; </arg>
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 65: &lt;<arg fmt="%s" index="1">std_logic_vector</arg>&gt; is not declared.
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">hej_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;hej_1&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">hej_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">lab</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;hej_3&gt; </arg>
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/WRstate_FSM_FFd1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U0/WRstate_FSM_FFd2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lab</arg>&gt;.
+<msg type="error" file="HDLCompiler" num="69" delta="old" >"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 66: &lt;<arg fmt="%s" index="1">unsigned</arg>&gt; is not declared.
 </msg>
 
 </messages>

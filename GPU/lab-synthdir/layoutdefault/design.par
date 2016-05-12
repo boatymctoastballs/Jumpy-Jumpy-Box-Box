@@ -1,7 +1,7 @@
 Release 12.4 par M.81d (lin64)
 Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
 
-mux1-11.edu.isy.liu.se::  Wed May 11 16:44:23 2016
+mux2-00.edu.isy.liu.se::  Thu May 12 14:23:25 2016
 
 par -nopad -w -ol high design_map.ncd design.ncd design.pcf 
 
@@ -184,7 +184,7 @@ All constraints were met.
 
 All signals are completely routed.
 
-Total REAL time to PAR completion: 6 secs 
+Total REAL time to PAR completion: 7 secs 
 Total CPU time to PAR completion: 6 secs 
 
 Peak Memory Usage:  463 MB
