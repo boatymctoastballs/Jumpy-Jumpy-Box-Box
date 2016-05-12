@@ -18,7 +18,7 @@ package types_package is
 		
 		type boardSprites_t is array (0 to 9) of sprite_t;
 	
-end package
+end package types_package;
 
 
 entity CPU is

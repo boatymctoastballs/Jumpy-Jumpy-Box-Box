@@ -109,13 +109,34 @@ architecture Behavioral of lab is
   signal spriteYPos : std_logic_vector(8 downto 0);
   signal spriteType : std_logic := '0';
 ----------------------------------------------------
-  signal pix_counter : std_logic_vector(4 downto 0) := "00000"; -- count from 0 to 19 - 00000 to 10011
+  signal pix_counter : std_logic_vector(8 downto 0) := "000000000"; -- count from 0 to 400 - 0000 0000 0 to 1100 1000 0
 
+
+		type pos_t is record		
+			x std_logic_vector(9 downto 0);
+			y std_logic_vector(8 downto 0);
+		end record;
+	
+		type sprite_t is record
+			pos : pos_t;
+			spriteType : std_logic_vector(1 downto 0) := "00";
+		end record;
+		
+		type boardSprites_t is array (0 to 9) of sprite_t;
+
+	signal boardSprites : boardSprites_t;
+	boardSprites(0).spriteType := "01"; -- lägg till sprite i boardSprites på sista position
+	boardSprites(0).pos.y := std_logic_vector(to_unsinged(339,9);
+	boardSprites(0).pos.x := std_logic_vector(to_unsinged(619,10);
+
+	boardSprites(1).spriteType := "10"; -- lägg till sprite i boardSprites på sista position
+	boardSprites(1).pos.y := std_logic_vector(to_unsinged(299,9);
+	boardSprites(1).pos.x := std_logic_vector(to_unsinged(619,10);
 
 	--colors for sprites
 	type colors_type is array (0 to 4) of std_logic_vector(7 downto 0);	
 	signal colors : colors_type := (
-		"00000000", -- BLACK 000
+		"00000000", -- BLACK 00
 		"11111111", -- WHITE 001		
 		"11000000", -- RED   010
 		"00011100", -- GREEN 011
@@ -253,6 +274,8 @@ begin
   Hsync <= hs;
   Vsync <= vs;
 
+
+
  
 ------------------ RITA UPP SPELPLAN ---------------------------
   process(clk) begin
@@ -270,9 +293,9 @@ begin
 			end if;
 		--------------------------------------------
 		-------------------SPELARE-----------------------
-			if xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<playerPos+20 and yctr>playerPos+10 and ducka = '1' then
+			if xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<ypos+20 and yctr>ypos+10 and ducka = '1' then
 				hej <= x"0F";
-			elsif xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<playerPos+20 and yctr>playerPos and ducka = '0' then
+			elsif xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<ypos+20 and yctr>ypos and ducka = '0' then
 				hej <= x"0F";
 			end if;
 		---------------------------------------------------
@@ -303,7 +326,26 @@ begin
 				if boardSprites(i).spriteType /= "00" then -- göra något om indexerat i är en sprite
 					if yctr>=boardSprites(i).pos.y and yctr<(boardSprites(i).pos.y+20) and xctr>=boardSprites(i).pos.x and xctr<(baordSprites.pos.x+20) then
 						if boardSprites(i).spriteType = "01" then --oksprite
-							hej <= colors(boardSprites(i).spriteType)
+							if pix_counter< 400 then							
+							hej <= colors(conv_to_integer(okSprite(pix_counter)));
+							pix_counter <= pix_counter+1
+								if pix_counter = 400 then
+									pix_counter <= '0';
+								end if;
+							end if;
+						end if:
+						if boardSprites(i).spriteType = "10" then --noksprite
+							if pix_counter< 400 then							
+							hej <= colors(conv_to_integer(nokSprite(pix_counter)));
+							pix_counter <= pix_counter+1
+								if pix_counter = 400 then
+									pix_counter <= '0';
+								end if;
+							end if;
+						end if:
+					end if;
+				end if:
+			end loop;
 		end if;
 	 else
 		hej <= "00000000";
