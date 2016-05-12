@@ -8,7 +8,7 @@ use IEEE.NUMERIC_STD.ALL;
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
 --library UNISIM;
---use UNISIM.VComponents.all;
+--use UNISIM.VComponents.all; 
 
 
 entity lab is
@@ -18,8 +18,8 @@ entity lab is
            ca,cb,cc,cd,ce,cf,cg,dp, Hsync,Vsync : out  STD_LOGIC;
            an : out  STD_LOGIC_VECTOR (3 downto 0);
 	   PS2KeyboardCLK	  : in STD_LOGIC;
-	   PS2KeyboardData        : in STD_LOGIC;
-	   boardSprites : in boardSprites_t);
+	   PS2KeyboardData        : in STD_LOGIC);
+	  -- boardSprites : in boardSprites_t);
 end lab;
 
 architecture Behavioral of lab is
@@ -94,7 +94,7 @@ architecture Behavioral of lab is
   signal hs : std_logic := '1';
   signal vs : std_logic := '1';
   --type ram_t is array (0 to 59) of std_logic_vector(0 to 79);
-  signal hej : std_logic_vector(7 downto 0) := "00000000";
+  signal farg : std_logic_vector(7 downto 0) := "00000000";
   signal jumpctr : std_logic_vector(19 downto 0) := X"00000";
   signal PlayerPosX : std_logic_vector(15 downto 0) := std_logic_vector(to_unsigned(60, 16));
   signal ypos : std_logic_vector(15 downto 0) := std_logic_vector(to_unsigned(339, 16));
@@ -260,20 +260,20 @@ begin
 	  if xctr <= 639 and yctr <= 479 then
 		--------------RAM---------------------
 		if xctr = 0 or yctr = 479 or yctr = 0 or xctr = 639 then
-			hej <= "11111111";
+			farg <= "11111111";
 		else
 			if yctr < 359 and yctr > 120 then
-				hej <= "11100011";
+				farg <= "11100011";
 
 			else	
-			    hej <= "00000000";
+			    farg <= "00000000";
 			end if;
 		--------------------------------------------
 		-------------------SPELARE-----------------------
 			if xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<ypos+20 and yctr>ypos+10 and ducka = '1' then
-				hej <= x"0F";
+				farg <= x"0F";
 			elsif xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<ypos+20 and yctr>ypos and ducka = '0' then
-				hej <= x"0F";
+				farg <= x"0F";
 			end if;
 		---------------------------------------------------
 		-------------------LÅDA---------------------------
@@ -288,18 +288,18 @@ begin
 
 			if xctr>boxpos and xctr<boxpos+20 and yctr>339 and yctr<359 then
 				if collision = '1' then
-					hej <= "11100000";
+					farg <= "11100000";
 				else
-					hej <= "11111111";
+					farg <= "11111111";
 				end if;
 			--elsif xctr>boxpos and xctr<boxpos+20 and yctr>339 and yctr<359 and collision = '0' then
-				--hej <= "11111111";
+				--farg <= "11111111";
 			end if;
 			--elsif xctr>boxpos and xctr<boxpos+20 and yctr>339 and yctr<359 then
-				--hej <= "11111111";
+				--farg <= "11111111";
 		end if;
 	 else
-		hej <= "00000000";
+		farg <= "00000000";
   	 end if; 
     end if;
   end process;
@@ -317,9 +317,9 @@ begin
 				--spriteType <= boardSprites(i)(0 downto 0);   -- garattnuddasprite = 1 = gron, garinteattnuddasprite = 0 = rod
 				--if xctr >=spriteXPos and xctr< spriteXPos+20 and yctr >= spriteYPos and yctr < spriteYPos+20 then    --rita upp sprite
 				--	if spriteType = "1" then
-					--	hej <= "00011100";      -- gron
+					--	farg <= "00011100";      -- gron
 					--elsif spriteType = "0" then
-					--	hej <= "11100000";     -- rod
+					--	farg <= "11100000";     -- rod
 					--end if;
 				--end if;
 		--end if;	
@@ -329,15 +329,15 @@ begin
 	--process(clk) begin
 		--if rising_edge(clk) then
 			--if xctr>=60 and xctr<80 and yctr>=playerPos and yctr< playerPos+20 -- rita upp player
-				--hej <= x"00000011";    --blå
+				--farg <= x"00000011";    --blå
 			--end if;
 		--end if;	
 ---------------------------------------------------------------------
 
 
-  vgaRed(2 downto 0) <= hej(7 downto 5);
-  vgaGreen(2 downto 0) <= hej(4 downto 2);
-  vgaBlue(2 downto 1) <= hej(1 downto 0);
+  vgaRed(2 downto 0) <= farg(7 downto 5);
+  vgaGreen(2 downto 0) <= farg(4 downto 2);
+  vgaBlue(2 downto 1) <= farg(1 downto 0);
 
  ----************** KOD FÖR ATT FLYTTA PÅ SPELAREN VARIABLAR OCH GREJER *******************--------
   process(clk) begin

@@ -43,13 +43,20 @@ architecture rtl of CPU is
     signal GR1_REG : STD_LOGIC_VECTOR(15 downto 0) := X"00F0"; 
     signal GR2_REG : STD_LOGIC_VECTOR(15 downto 0) := X"00F0";  
     signal GR3_REG : STD_LOGIC_VECTOR(15 downto 0) := X"0000";
-    
+
+
+----------------SIGNLAR FÖR SPELARE------------------
+	signal playerPos : std_logic_vector(15 downto 0) := std_logic_vector(to_unsigned(339, 16));
+	signal turnaround : std_logic := '0';
+	signal knapp : std_logic := '0';
+-----------------------------------------------------   
     -- PM/RAM och MyM
     type ram_type is array (0 to 15) of std_logic_vector(15 downto 0); --inte 15, beror på hur stort programmet blir
     type mram_type is array (0 to 36) of std_logic_vector(24 downto 0);
 
     signal ram : ram_type := (
-
+	--PM---------
+	X"" --ladda 
 
     constant mram : mram_type := (
 --    ALU     TB      FB      S     P     LC     SEQ       myADR      
@@ -90,8 +97,8 @@ architecture rtl of CPU is
     "0000" & "100" & "010" & "0" & "1" & "00" & "0011" & "0000000", --0x1F AR => PM, PC++, mpc = 0
     "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x20 
     "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x21 
-    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x22 
-    "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x23
+    "1001" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x22  ------------- HOPP 
+    "0000" & "000" & "000" & "0" & "0" & "00" & "0011" & "0000000", --0x23
     "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x24
     "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000", --0x25 
     "0000" & "000" & "000" & "0" & "0" & "00" & "0000" & "0000000"  --0x26
@@ -113,6 +120,7 @@ architecture rtl of CPU is
     X"14", -- AND    0x08
     X"1A", -- BTST   0x09
     X"1B", -- BNE    0x0A
+	X"22", -- HOPP   0x0B
     );
     constant k2 : k2_type := (
     X"03",
@@ -120,6 +128,7 @@ architecture rtl of CPU is
     X"00",
     X"00"
     );
+
 
 ----------banor----------------------------c-p-d-w-----------------
 	
@@ -364,6 +373,23 @@ begin
 		when "0011" => AR_REG(15 downto 0) <= X"0000"; -- RESET
 		when "1110" => -- något
 		when "1111" => -- något
+		when "1001" => 		
+							while knapp /= '0' and turnaround /= '0' loop
+								if jumpctr = 0 and turnaround = '0' and playerPos<= 295  then
+									playerPos <= playerPos-1;
+								elsif jumpctr = 0 and turnaround = '1' and playerPos <= 295  then
+									playerPos <= playerPos+1;
+
+								elsif (jumpctr = 0 or jumpctr = x"7FFF") and turnaround = '0' and playerPos >= 295 then
+									playerPos <= playerPos-1;
+								elsif (jumpctr = 0 or jumpctr = x"7FFF") and turnaround = '1' and playerPos >= 295 then
+									playerPos <= playerPos+1;
+								end if;
+								if playerPos = 339 then
+									knapp <= '0';
+									turnaround <= '0';
+								end if;
+							end loop;
 		when "0110" => --outPos1 <= GR1_REG(9 downto 0) & GR2_REG (9 downto 0);
                 when others => null;
             end case;

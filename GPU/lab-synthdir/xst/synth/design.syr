@@ -5,7 +5,7 @@ Parameter TMPDIR set to tmpdir
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> 
 
@@ -57,33 +57,536 @@ Optimization Goal                  : SPEED
 =========================================================================
 Parsing VHDL file "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" into library work
 Parsing entity <lab>.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 22: <boardsprites_t> is not declared.
-ERROR:HDLCompiler:854 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 14: Unit <lab> ignored due to previous errors.
 Parsing architecture <Behavioral> of entity <lab>.
-ERROR:HDLCompiler:374 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 25: Entity <lab> is not yet compiled.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 27: <std_logic> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 28: <std_logic> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 29: <std_logic_vector> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 30: <std_logic_vector> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 51: <std_logic> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 52: <std_logic> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 53: <std_logic> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 54: <std_logic> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 55: <std_logic_vector> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 56: <unsigned> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 57: <std_logic> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 61: <std_logic> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 63: <std_logic> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 64: <std_logic_vector> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 65: <std_logic_vector> is not declared.
-ERROR:HDLCompiler:69 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 66: <unsigned> is not declared.
-Sorry, too many errors..
+Parsing VHDL file "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../leddriver.vhd" into library work
+Parsing entity <leddriver>.
+Parsing architecture <Behavioral> of entity <leddriver>.
+Parsing VHDL file "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../KBD_ENC.vhd" into library work
+Parsing entity <KBD_ENC>.
+Parsing architecture <behavioral> of entity <kbd_enc>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <lab> (architecture <Behavioral>) from library <work>.
+WARNING:HDLCompiler:871 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 99: Using initial value ('0','0','0','0','0','0','0','0','0','0','1','1','1','1','0','0') for playerposx since it is never assigned
+
+Elaborating entity <KBD_ENC> (architecture <behavioral>) from library <work>.
+WARNING:HDLCompiler:1127 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../KBD_ENC.vhd" Line 212: Assignment to curmovement ignored, since the identifier is never used
+INFO:HDLCompiler:679 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../KBD_ENC.vhd" Line 250. Case statement is complete. others clause is never selected
+
+Elaborating entity <leddriver> (architecture <Behavioral>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <lab>.
+    Related source file is "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd".
+INFO:Xst:3010 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd" line 415: Output port <addr> of the instance <U0> is unconnected or connected to loadless signal.
+INFO:Xst:3010 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd" line 415: Output port <we> of the instance <U0> is unconnected or connected to loadless signal.
+    Found 10-bit register for signal <xctr>.
+    Found 1-bit register for signal <Hsync>.
+    Found 10-bit register for signal <yctr>.
+    Found 1-bit register for signal <Vsync>.
+    Found 8-bit register for signal <farg>.
+    Found 1-bit register for signal <collision>.
+    Found 20-bit register for signal <jumpctr>.
+    Found 1-bit register for signal <ducka>.
+    Found 1-bit register for signal <knapp>.
+    Found 1-bit register for signal <turnaround>.
+    Found 16-bit register for signal <ypos>.
+    Found 16-bit register for signal <boxpos>.
+    Found 16-bit register for signal <ctr>.
+    Found 2-bit register for signal <pixel>.
+    Found 2-bit adder for signal <pixel[1]_GND_6_o_add_0_OUT> created at line 208.
+    Found 10-bit adder for signal <xctr[9]_GND_6_o_add_5_OUT> created at line 222.
+    Found 10-bit adder for signal <yctr[9]_GND_6_o_add_15_OUT> created at line 242.
+    Found 16-bit adder for signal <ypos[15]_GND_6_o_add_35_OUT> created at line 273.
+    Found 16-bit adder for signal <ypos[15]_GND_6_o_add_39_OUT> created at line 275.
+    Found 16-bit adder for signal <boxpos[15]_GND_6_o_add_49_OUT> created at line 289.
+    Found 20-bit adder for signal <jumpctr[19]_GND_6_o_add_61_OUT> created at line 345.
+    Found 16-bit adder for signal <ypos[15]_GND_6_o_add_78_OUT> created at line 370.
+    Found 16-bit subtractor for signal <GND_6_o_GND_6_o_sub_75_OUT<15:0>> created at line 368.
+    Found 16-bit subtractor for signal <GND_6_o_GND_6_o_sub_92_OUT<15:0>> created at line 392.
+    Found 10-bit comparator lessequal for signal <n0032> created at line 260
+    Found 10-bit comparator lessequal for signal <n0034> created at line 260
+    Found 10-bit comparator greater for signal <yctr[9]_GND_6_o_LessThan_29_o> created at line 265
+    Found 10-bit comparator greater for signal <GND_6_o_yctr[9]_LessThan_30_o> created at line 265
+    Found 16-bit comparator greater for signal <ypos[15]_GND_6_o_LessThan_37_o> created at line 273
+    Found 10-bit comparator greater for signal <GND_6_o_xctr[9]_LessThan_38_o> created at line 275
+    Found 10-bit comparator greater for signal <xctr[9]_GND_6_o_LessThan_39_o> created at line 275
+    Found 16-bit comparator greater for signal <GND_6_o_ypos[15]_LessThan_41_o> created at line 275
+    Found 16-bit comparator greater for signal <ypos[15]_GND_6_o_LessThan_42_o> created at line 275
+    Found 16-bit comparator lessequal for signal <n0064> created at line 280
+    Found 16-bit comparator lessequal for signal <n0066> created at line 280
+    Found 16-bit comparator greater for signal <GND_6_o_ypos[15]_LessThan_48_o> created at line 280
+    Found 16-bit comparator greater for signal <boxpos[15]_GND_6_o_LessThan_49_o> created at line 289
+    Found 16-bit comparator greater for signal <GND_6_o_boxpos[15]_LessThan_51_o> created at line 289
+    Found 10-bit comparator greater for signal <GND_6_o_yctr[9]_LessThan_52_o> created at line 289
+    Found 16-bit comparator lessequal for signal <n0099> created at line 364
+    Found 16-bit comparator lessequal for signal <n0110> created at line 369
+    Found 16-bit comparator greater for signal <ypos[15]_GND_6_o_LessThan_81_o> created at line 377
+    Found 16-bit comparator greater for signal <n0142> created at line 395
+    Summary:
+	inferred  10 Adder/Subtractor(s).
+	inferred 104 D-type flip-flop(s).
+	inferred  19 Comparator(s).
+	inferred  14 Multiplexer(s).
+Unit <lab> synthesized.
+
+Synthesizing Unit <KBD_ENC>.
+    Related source file is "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/KBD_ENC.vhd".
+WARNING:Xst:653 - Signal <addr> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    Found 1-bit register for signal <PS2Data>.
+    Found 1-bit register for signal <PS2Clk_Q1>.
+    Found 1-bit register for signal <PS2Clk_Q2>.
+    Found 11-bit register for signal <PS2Data_sr>.
+    Found 4-bit register for signal <PS2BitCounter>.
+    Found 2-bit register for signal <PS2state>.
+    Found 2-bit register for signal <WRstate>.
+    Found 1-bit register for signal <PS2Clk>.
+    Found finite state machine <FSM_0> for signal <PS2state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 1                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Power Up State     | idle                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_1> for signal <WRstate>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 4                                              |
+    | Inputs             | 1                                              |
+    | Outputs            | 1                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | standby                                        |
+    | Power Up State     | standby                                        |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 4-bit adder for signal <PS2BitCounter[3]_GND_7_o_add_3_OUT> created at line 1241.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  19 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+	inferred   2 Finite State Machine(s).
+Unit <KBD_ENC> synthesized.
+
+Synthesizing Unit <leddriver>.
+    Related source file is "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/leddriver.vhd".
+WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 7-bit register for signal <segments>.
+    Found 4-bit register for signal <an>.
+    Found 18-bit register for signal <counter_r>.
+    Found 18-bit adder for signal <counter_r[17]_GND_8_o_add_1_OUT> created at line 1241.
+    Found 16x7-bit Read Only RAM for signal <v[3]_GND_8_o_wide_mux_2_OUT>
+    Found 4x4-bit Read Only RAM for signal <counter_r[17]_PWR_9_o_wide_mux_3_OUT>
+    Found 1-bit 4-to-1 multiplexer for signal <v<3>> created at line 43.
+    Found 1-bit 4-to-1 multiplexer for signal <v<2>> created at line 43.
+    Found 1-bit 4-to-1 multiplexer for signal <v<1>> created at line 43.
+    Found 1-bit 4-to-1 multiplexer for signal <v<0>> created at line 43.
+    Summary:
+	inferred   2 RAM(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  29 D-type flip-flop(s).
+	inferred   4 Multiplexer(s).
+Unit <leddriver> synthesized.
+RTL-Simplification CPUSTAT: 0.16 
+RTL-BasicInf CPUSTAT: 0.24 
+RTL-BasicOpt CPUSTAT: 0.00 
+RTL-Remain-Bus CPUSTAT: 0.00 
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 16x7-bit single-port Read Only RAM                    : 1
+ 4x4-bit single-port Read Only RAM                     : 1
+# Adders/Subtractors                                   : 12
+ 10-bit adder                                          : 2
+ 16-bit adder                                          : 4
+ 16-bit subtractor                                     : 2
+ 18-bit adder                                          : 1
+ 2-bit adder                                           : 1
+ 20-bit adder                                          : 1
+ 4-bit adder                                           : 1
+# Registers                                            : 23
+ 1-bit register                                        : 10
+ 10-bit register                                       : 2
+ 11-bit register                                       : 1
+ 16-bit register                                       : 3
+ 18-bit register                                       : 1
+ 2-bit register                                        : 1
+ 20-bit register                                       : 1
+ 4-bit register                                        : 2
+ 7-bit register                                        : 1
+ 8-bit register                                        : 1
+# Comparators                                          : 19
+ 10-bit comparator greater                             : 5
+ 10-bit comparator lessequal                           : 2
+ 16-bit comparator greater                             : 8
+ 16-bit comparator lessequal                           : 4
+# Multiplexers                                         : 19
+ 1-bit 2-to-1 multiplexer                              : 8
+ 1-bit 4-to-1 multiplexer                              : 4
+ 16-bit 2-to-1 multiplexer                             : 3
+ 8-bit 2-to-1 multiplexer                              : 4
+# FSMs                                                 : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <KBD_ENC>.
+The following registers are absorbed into counter <PS2BitCounter>: 1 register on signal <PS2BitCounter>.
+Unit <KBD_ENC> synthesized (advanced).
+
+Synthesizing (advanced) Unit <lab>.
+The following registers are absorbed into counter <jumpctr>: 1 register on signal <jumpctr>.
+The following registers are absorbed into counter <pixel>: 1 register on signal <pixel>.
+The following registers are absorbed into counter <boxpos>: 1 register on signal <boxpos>.
+The following registers are absorbed into counter <xctr>: 1 register on signal <xctr>.
+The following registers are absorbed into counter <yctr>: 1 register on signal <yctr>.
+Unit <lab> synthesized (advanced).
+
+Synthesizing (advanced) Unit <leddriver>.
+The following registers are absorbed into counter <counter_r>: 1 register on signal <counter_r>.
+INFO:Xst:3048 - The small RAM <Mram_v[3]_GND_8_o_wide_mux_2_OUT> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 7-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <v>             |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3048 - The small RAM <Mram_counter_r[17]_PWR_9_o_wide_mux_3_OUT> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 4-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <counter_r>     |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <leddriver> synthesized (advanced).
+WARNING:Xst:2677 - Node <PS2Data_sr_0> of sequential type is unconnected in block <KBD_ENC>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 16x7-bit single-port distributed Read Only RAM        : 1
+ 4x4-bit single-port distributed Read Only RAM         : 1
+# Adders/Subtractors                                   : 5
+ 16-bit adder                                          : 4
+ 16-bit subtractor                                     : 1
+# Counters                                             : 7
+ 10-bit up counter                                     : 2
+ 16-bit down counter                                   : 1
+ 18-bit up counter                                     : 1
+ 2-bit up counter                                      : 1
+ 20-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 71
+ Flip-Flops                                            : 71
+# Comparators                                          : 19
+ 10-bit comparator greater                             : 5
+ 10-bit comparator lessequal                           : 2
+ 16-bit comparator greater                             : 8
+ 16-bit comparator lessequal                           : 4
+# Multiplexers                                         : 19
+ 1-bit 2-to-1 multiplexer                              : 8
+ 1-bit 4-to-1 multiplexer                              : 4
+ 16-bit 2-to-1 multiplexer                             : 3
+ 8-bit 2-to-1 multiplexer                              : 4
+# FSMs                                                 : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1293 - FF/Latch <ctr_8> has a constant value of 0 in block <lab>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ctr_9> has a constant value of 0 in block <lab>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ctr_10> has a constant value of 0 in block <lab>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ctr_11> has a constant value of 0 in block <lab>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ctr_12> has a constant value of 0 in block <lab>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ctr_13> has a constant value of 0 in block <lab>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ctr_14> has a constant value of 0 in block <lab>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ctr_15> has a constant value of 0 in block <lab>. This FF/Latch will be trimmed during the optimization process.
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <U0/FSM_0> on signal <PS2state[1:2]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ idle  | 00
+ make  | 01
+ break | 10
+-------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <U0/FSM_1> on signal <WRstate[1:2]> with user encoding.
+---------------------
+ State   | Encoding
+---------------------
+ standby | 00
+ wrchar  | 01
+ wrcur   | 10
+---------------------
+INFO:Xst:2261 - The FF/Latch <farg_5> in Unit <lab> is equivalent to the following 2 FFs/Latches, which will be removed : <farg_6> <farg_7> 
+INFO:Xst:2261 - The FF/Latch <farg_0> in Unit <lab> is equivalent to the following FF/Latch, which will be removed : <farg_1> 
+INFO:Xst:2261 - The FF/Latch <farg_2> in Unit <lab> is equivalent to the following FF/Latch, which will be removed : <farg_3> 
+
+Optimizing unit <lab> ...
+
+Optimizing unit <KBD_ENC> ...
+
+Optimizing unit <leddriver> ...
+WARNING:Xst:2677 - Node <U0/WRstate_FSM_FFd1> of sequential type is unconnected in block <lab>.
+WARNING:Xst:2677 - Node <U0/WRstate_FSM_FFd2> of sequential type is unconnected in block <lab>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 0) on block lab, actual ratio is 4.
+
+Final Macro Processing ...
+
+Processing Unit <lab> :
+	Found 3-bit shift register for signal <U0/PS2Data_sr_8>.
+Unit <lab> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 138
+ Flip-Flops                                            : 138
+# Shift Registers                                      : 1
+ 3-bit shift register                                  : 1
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : design.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 704
+#      GND                         : 1
+#      INV                         : 44
+#      LUT1                        : 108
+#      LUT2                        : 15
+#      LUT3                        : 26
+#      LUT4                        : 64
+#      LUT5                        : 43
+#      LUT6                        : 82
+#      MUXCY                       : 171
+#      VCC                         : 1
+#      XORCY                       : 149
+# FlipFlops/Latches                : 139
+#      FD                          : 62
+#      FDE                         : 9
+#      FDR                         : 16
+#      FDRE                        : 45
+#      FDS                         : 1
+#      FDSE                        : 6
+# Shift Registers                  : 1
+#      SRLC16E                     : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 25
+#      IBUF                        : 3
+#      OBUF                        : 22
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             139  out of  18224     0%  
+ Number of Slice LUTs:                  383  out of   9112     4%  
+    Number used as Logic:               382  out of   9112     4%  
+    Number used as Memory:                1  out of   2176     0%  
+       Number used as SRL:                1
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    421
+   Number with an unused Flip Flop:     282  out of    421    66%  
+   Number with an unused LUT:            38  out of    421     9%  
+   Number of fully used LUT-FF pairs:   101  out of    421    23%  
+   Number of unique control sets:        12
+
+IO Utilization: 
+ Number of IOs:                          26
+ Number of bonded IOBs:                  26  out of    232    11%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 140   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 6.132ns (Maximum Frequency: 163.092MHz)
+   Minimum input arrival time before clock: 4.057ns
+   Maximum output required time after clock: 3.668ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 6.132ns (frequency: 163.092MHz)
+  Total number of paths / destination ports: 10927 / 238
+-------------------------------------------------------------------------
+Delay:               6.132ns (Levels of Logic = 5)
+  Source:            jumpctr_2 (FF)
+  Destination:       ypos_0 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: jumpctr_2 to ypos_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               3   0.447   1.015  jumpctr_2 (jumpctr_2)
+     LUT6:I0->O            1   0.203   0.684  GND_6_o_jumpctr[19]_OR_79_o111 (GND_6_o_jumpctr[19]_OR_79_o11)
+     LUT5:I3->O            9   0.203   0.830  GND_6_o_jumpctr[19]_OR_79_o113 (N23)
+     LUT4:I3->O           17   0.205   1.028  _n0407_inv313 (N47)
+     LUT5:I4->O           16   0.205   1.005  _n0407_inv1_rstpot (_n0407_inv1_rstpot)
+     LUT3:I2->O            1   0.205   0.000  ypos_0_dpot (ypos_0_dpot)
+     FDSE:D                    0.102          ypos_0
+    ----------------------------------------
+    Total                      6.132ns (1.570ns logic, 4.562ns route)
+                                       (25.6% logic, 74.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 35 / 35
+-------------------------------------------------------------------------
+Offset:              4.057ns (Levels of Logic = 2)
+  Source:            rst (PAD)
+  Destination:       xctr_2 (FF)
+  Destination Clock: clk rising
+
+  Data Path: rst to xctr_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            15   1.222   1.346  rst_IBUF (rst_IBUF)
+     LUT6:I0->O           10   0.203   0.856  Mcount_yctr_val1 (Mcount_yctr_val)
+     FDRE:R                    0.430          yctr_0
+    ----------------------------------------
+    Total                      4.057ns (1.855ns logic, 2.202ns route)
+                                       (45.7% logic, 54.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 21 / 21
+-------------------------------------------------------------------------
+Offset:              3.668ns (Levels of Logic = 1)
+  Source:            farg_5 (FF)
+  Destination:       vgaRed<2> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: farg_5 to vgaRed<2>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.447   0.650  farg_5 (farg_5)
+     OBUF:I->O                 2.571          vgaRed_2_OBUF (vgaRed<2>)
+    ----------------------------------------
+    Total                      3.668ns (3.018ns logic, 0.650ns route)
+                                       (82.3% logic, 17.7% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    6.132|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 6.20 secs
+ 
 --> 
 
 
-Total memory usage is 397888 kilobytes
+Total memory usage is 464188 kilobytes
 
-Number of errors   :   19 (   0 filtered)
-Number of warnings :    1 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   16 (   0 filtered)
+Number of infos    :    7 (   0 filtered)
 

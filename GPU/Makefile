@@ -33,14 +33,14 @@ XILINX_INIT = source /sw/xilinx/ise_14.2i/ISE_DS/settings64.sh;
 PART=xc6slx16-3-csg324
 
 
-lab.%: S=lab.vhd leddriver.vhd KBD_ENC.vhd PICT_MEM.vhd
+lab.%: S=lab.vhd leddriver.vhd KBD_ENC.vhd
 lab.%: T=lab_tb.vhd
 lab.%: U=lab.ucf
 
 
 # Det här är ett exempel på hur man kan skriva en testbänk som är
 # relevant, även om man kör en simulering i batchläge (make batchlab.simc)
-batchlab.%: S=lab.vhd leddriver.vhd KBD_ENC.vhd PICT_MEM.vhd
+batchlab.%: S=lab.vhd leddriver.vhd KBD_ENC.vhd
 batchlab.%: T=batchlab_tb.vhd tb_print7seg.vhd
 batchlab.%: U=lab.ucf
 

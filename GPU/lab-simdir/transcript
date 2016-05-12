@@ -1,4 +1,4 @@
-# //  ModelSim SE 6.5c Aug 27 2009 Linux 2.6.32-573.22.1.el6.x86_64
+# //  ModelSim SE 6.5c Aug 27 2009 Linux 2.6.32-573.26.1.el6.x86_64
 # //
 # //  Copyright 1991-2009 Mentor Graphics Corporation
 # //              All Rights Reserved.
@@ -12,5 +12,5 @@
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Error: ../lab_tb.vhd(49): (vopt-1130) Port "ps2keyboardclk" of entity "lab" is not in the component being instantiated.
 # ** Error: ../lab_tb.vhd(49): (vopt-1130) Port "ps2keyboarddata" of entity "lab" is not in the component being instantiated.
-# ** Error: ../lab.vhd(24): Vopt Compiler exiting
+# ** Error: ../lab.vhd(25): Vopt Compiler exiting
 # Error loading design

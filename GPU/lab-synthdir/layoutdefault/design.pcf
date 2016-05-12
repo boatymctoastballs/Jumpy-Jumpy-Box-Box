@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map M.81d on Thu May 12 14:23:23 2016
+// Written by: Map M.81d on Thu May 12 15:35:17 2016
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -61,9 +61,9 @@ TIMEGRP sys_clk_pin = BEL "collision" BEL "knapp" BEL "ctr_0" BEL "ctr_1" BEL
         "led/segments_5" BEL "led/segments_4" BEL "led/segments_3" BEL
         "led/segments_2" BEL "led/segments_1" BEL "led/segments_0" BEL
         "led/an_3" BEL "led/an_2" BEL "led/an_1" BEL "led/an_0" BEL "hs" BEL
-        "vs" BEL "ducka" BEL "hej_0" BEL "hej_2" BEL "hej_4" BEL "hej_5" BEL
-        "boxpos_3" BEL "boxpos_1" BEL "boxpos_5" BEL "boxpos_6" BEL "boxpos_7"
-        BEL "boxpos_0" BEL "turnaround" BEL "clk_BUFGP/BUFG" BEL
+        "vs" BEL "ducka" BEL "farg_0" BEL "farg_2" BEL "farg_4" BEL "farg_5"
+        BEL "boxpos_3" BEL "boxpos_1" BEL "boxpos_5" BEL "boxpos_6" BEL
+        "boxpos_7" BEL "boxpos_0" BEL "turnaround" BEL "clk_BUFGP/BUFG" BEL
         "U0/Mshreg_PS2Data_sr_8" BEL "U0/PS2Data_sr_8";
 TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
 SCHEMATIC END;

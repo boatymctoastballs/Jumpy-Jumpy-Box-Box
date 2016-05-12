@@ -1,7 +1,7 @@
 Release 12.4 par M.81d (lin64)
 Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
 
-mux2-00.edu.isy.liu.se::  Thu May 12 14:23:25 2016
+mux2-00.edu.isy.liu.se::  Thu May 12 15:35:19 2016
 
 par -nopad -w -ol high design_map.ncd design.ncd design.pcf 
 
@@ -116,13 +116,13 @@ Finished initial Timing Analysis.  REAL time: 4 secs
 Starting Router
 
 
-Phase  1  : 1433 unrouted;      REAL time: 4 secs 
+Phase  1  : 1433 unrouted;      REAL time: 5 secs 
 
 Phase  2  : 1187 unrouted;      REAL time: 5 secs 
 
-Phase  3  : 433 unrouted;      REAL time: 5 secs 
+Phase  3  : 436 unrouted;      REAL time: 5 secs 
 
-Phase  4  : 433 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
+Phase  4  : 436 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
 
 Updating file: design.ncd with current fully routed design.
 
