@@ -4,8 +4,8 @@ Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to tmpdir
 
 
-Total REAL time to Xst completion: 3.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> 
 
@@ -73,6 +73,7 @@ Parsing architecture <Behavioral> of entity <pict_mem>.
 =========================================================================
 
 Elaborating entity <lab> (architecture <Behavioral>) from library <work>.
+WARNING:HDLCompiler:871 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../lab.vhd" Line 98: Using initial value ('0','0','0','0','0','0','0','0','0','0','1','1','1','1','0','0') for playerposx since it is never assigned
 
 Elaborating entity <KBD_ENC> (architecture <behavioral>) from library <work>.
 WARNING:HDLCompiler:1127 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/xst/synth/../../../KBD_ENC.vhd" Line 212: Assignment to curmovement ignored, since the identifier is never used
@@ -86,13 +87,14 @@ Elaborating entity <leddriver> (architecture <Behavioral>) from library <work>.
 
 Synthesizing Unit <lab>.
     Related source file is "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd".
-INFO:Xst:3010 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd" line 305: Output port <addr> of the instance <U0> is unconnected or connected to loadless signal.
-INFO:Xst:3010 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd" line 305: Output port <we> of the instance <U0> is unconnected or connected to loadless signal.
+INFO:Xst:3010 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd" line 323: Output port <addr> of the instance <U0> is unconnected or connected to loadless signal.
+INFO:Xst:3010 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd" line 323: Output port <we> of the instance <U0> is unconnected or connected to loadless signal.
     Found 10-bit register for signal <xctr>.
     Found 1-bit register for signal <Hsync>.
     Found 10-bit register for signal <yctr>.
     Found 1-bit register for signal <Vsync>.
     Found 8-bit register for signal <hej>.
+    Found 1-bit register for signal <collision>.
     Found 20-bit register for signal <jumpctr>.
     Found 1-bit register for signal <ducka>.
     Found 1-bit register for signal <knapp>.
@@ -101,37 +103,40 @@ INFO:Xst:3010 - "/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab.vhd" line 305
     Found 16-bit register for signal <boxpos>.
     Found 16-bit register for signal <ctr>.
     Found 2-bit register for signal <pixel>.
-    Found 2-bit adder for signal <pixel[1]_GND_6_o_add_0_OUT> created at line 117.
-    Found 10-bit adder for signal <xctr[9]_GND_6_o_add_5_OUT> created at line 131.
-    Found 10-bit adder for signal <yctr[9]_GND_6_o_add_15_OUT> created at line 151.
-    Found 16-bit adder for signal <ypos[15]_GND_6_o_add_35_OUT> created at line 182.
-    Found 16-bit adder for signal <ypos[15]_GND_6_o_add_39_OUT> created at line 184.
-    Found 16-bit adder for signal <boxpos[15]_GND_6_o_add_45_OUT> created at line 189.
-    Found 20-bit adder for signal <jumpctr[19]_GND_6_o_add_56_OUT> created at line 235.
-    Found 16-bit adder for signal <ypos[15]_GND_6_o_add_73_OUT> created at line 260.
-    Found 16-bit subtractor for signal <GND_6_o_GND_6_o_sub_70_OUT<15:0>> created at line 258.
-    Found 16-bit subtractor for signal <GND_6_o_GND_6_o_sub_87_OUT<15:0>> created at line 282.
-    Found 10-bit comparator lessequal for signal <n0032> created at line 169
-    Found 10-bit comparator lessequal for signal <n0034> created at line 169
-    Found 10-bit comparator greater for signal <yctr[9]_GND_6_o_LessThan_29_o> created at line 174
-    Found 10-bit comparator greater for signal <GND_6_o_yctr[9]_LessThan_30_o> created at line 174
-    Found 16-bit comparator greater for signal <ypos[15]_GND_6_o_LessThan_37_o> created at line 182
-    Found 10-bit comparator greater for signal <GND_6_o_xctr[9]_LessThan_38_o> created at line 184
-    Found 10-bit comparator greater for signal <xctr[9]_GND_6_o_LessThan_39_o> created at line 184
-    Found 16-bit comparator greater for signal <GND_6_o_ypos[15]_LessThan_41_o> created at line 184
-    Found 16-bit comparator greater for signal <ypos[15]_GND_6_o_LessThan_42_o> created at line 184
-    Found 16-bit comparator greater for signal <boxpos[15]_GND_6_o_LessThan_45_o> created at line 189
-    Found 16-bit comparator greater for signal <GND_6_o_boxpos[15]_LessThan_47_o> created at line 189
-    Found 10-bit comparator greater for signal <GND_6_o_yctr[9]_LessThan_48_o> created at line 189
-    Found 16-bit comparator lessequal for signal <n0088> created at line 254
-    Found 16-bit comparator lessequal for signal <n0099> created at line 259
-    Found 16-bit comparator greater for signal <ypos[15]_GND_6_o_LessThan_76_o> created at line 267
-    Found 16-bit comparator greater for signal <n0131> created at line 285
+    Found 2-bit adder for signal <pixel[1]_GND_6_o_add_0_OUT> created at line 119.
+    Found 10-bit adder for signal <xctr[9]_GND_6_o_add_5_OUT> created at line 133.
+    Found 10-bit adder for signal <yctr[9]_GND_6_o_add_15_OUT> created at line 153.
+    Found 16-bit adder for signal <ypos[15]_GND_6_o_add_35_OUT> created at line 184.
+    Found 16-bit adder for signal <ypos[15]_GND_6_o_add_39_OUT> created at line 186.
+    Found 16-bit adder for signal <boxpos[15]_GND_6_o_add_49_OUT> created at line 200.
+    Found 20-bit adder for signal <jumpctr[19]_GND_6_o_add_61_OUT> created at line 253.
+    Found 16-bit adder for signal <ypos[15]_GND_6_o_add_78_OUT> created at line 278.
+    Found 16-bit subtractor for signal <GND_6_o_GND_6_o_sub_75_OUT<15:0>> created at line 276.
+    Found 16-bit subtractor for signal <GND_6_o_GND_6_o_sub_92_OUT<15:0>> created at line 300.
+    Found 10-bit comparator lessequal for signal <n0032> created at line 171
+    Found 10-bit comparator lessequal for signal <n0034> created at line 171
+    Found 10-bit comparator greater for signal <yctr[9]_GND_6_o_LessThan_29_o> created at line 176
+    Found 10-bit comparator greater for signal <GND_6_o_yctr[9]_LessThan_30_o> created at line 176
+    Found 16-bit comparator greater for signal <ypos[15]_GND_6_o_LessThan_37_o> created at line 184
+    Found 10-bit comparator greater for signal <GND_6_o_xctr[9]_LessThan_38_o> created at line 186
+    Found 10-bit comparator greater for signal <xctr[9]_GND_6_o_LessThan_39_o> created at line 186
+    Found 16-bit comparator greater for signal <GND_6_o_ypos[15]_LessThan_41_o> created at line 186
+    Found 16-bit comparator greater for signal <ypos[15]_GND_6_o_LessThan_42_o> created at line 186
+    Found 16-bit comparator lessequal for signal <n0064> created at line 191
+    Found 16-bit comparator lessequal for signal <n0066> created at line 191
+    Found 16-bit comparator greater for signal <GND_6_o_ypos[15]_LessThan_48_o> created at line 191
+    Found 16-bit comparator greater for signal <boxpos[15]_GND_6_o_LessThan_49_o> created at line 200
+    Found 16-bit comparator greater for signal <GND_6_o_boxpos[15]_LessThan_51_o> created at line 200
+    Found 10-bit comparator greater for signal <GND_6_o_yctr[9]_LessThan_52_o> created at line 200
+    Found 16-bit comparator lessequal for signal <n0099> created at line 272
+    Found 16-bit comparator lessequal for signal <n0110> created at line 277
+    Found 16-bit comparator greater for signal <ypos[15]_GND_6_o_LessThan_81_o> created at line 285
+    Found 16-bit comparator greater for signal <n0142> created at line 303
     Summary:
 	inferred  10 Adder/Subtractor(s).
-	inferred 103 D-type flip-flop(s).
-	inferred  16 Comparator(s).
-	inferred  16 Multiplexer(s).
+	inferred 104 D-type flip-flop(s).
+	inferred  19 Comparator(s).
+	inferred  14 Multiplexer(s).
 Unit <lab> synthesized.
 
 Synthesizing Unit <KBD_ENC>.
@@ -197,10 +202,10 @@ WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and lef
 	inferred  29 D-type flip-flop(s).
 	inferred   4 Multiplexer(s).
 Unit <leddriver> synthesized.
-RTL-Simplification CPUSTAT: 0.13 
-RTL-BasicInf CPUSTAT: 0.22 
+RTL-Simplification CPUSTAT: 0.16 
+RTL-BasicInf CPUSTAT: 0.23 
 RTL-BasicOpt CPUSTAT: 0.00 
-RTL-Remain-Bus CPUSTAT: 0.01 
+RTL-Remain-Bus CPUSTAT: 0.00 
 
 =========================================================================
 HDL Synthesis Report
@@ -217,8 +222,8 @@ Macro Statistics
  2-bit adder                                           : 1
  20-bit adder                                          : 1
  4-bit adder                                           : 1
-# Registers                                            : 22
- 1-bit register                                        : 9
+# Registers                                            : 23
+ 1-bit register                                        : 10
  10-bit register                                       : 2
  11-bit register                                       : 1
  16-bit register                                       : 3
@@ -228,13 +233,13 @@ Macro Statistics
  4-bit register                                        : 2
  7-bit register                                        : 1
  8-bit register                                        : 1
-# Comparators                                          : 16
+# Comparators                                          : 19
  10-bit comparator greater                             : 5
  10-bit comparator lessequal                           : 2
- 16-bit comparator greater                             : 7
- 16-bit comparator lessequal                           : 2
-# Multiplexers                                         : 21
- 1-bit 2-to-1 multiplexer                              : 10
+ 16-bit comparator greater                             : 8
+ 16-bit comparator lessequal                           : 4
+# Multiplexers                                         : 19
+ 1-bit 2-to-1 multiplexer                              : 8
  1-bit 4-to-1 multiplexer                              : 4
  16-bit 2-to-1 multiplexer                             : 3
  8-bit 2-to-1 multiplexer                              : 4
@@ -303,15 +308,15 @@ Macro Statistics
  2-bit up counter                                      : 1
  20-bit up counter                                     : 1
  4-bit up counter                                      : 1
-# Registers                                            : 70
- Flip-Flops                                            : 70
-# Comparators                                          : 16
+# Registers                                            : 71
+ Flip-Flops                                            : 71
+# Comparators                                          : 19
  10-bit comparator greater                             : 5
  10-bit comparator lessequal                           : 2
- 16-bit comparator greater                             : 7
- 16-bit comparator lessequal                           : 2
-# Multiplexers                                         : 21
- 1-bit 2-to-1 multiplexer                              : 10
+ 16-bit comparator greater                             : 8
+ 16-bit comparator lessequal                           : 4
+# Multiplexers                                         : 19
+ 1-bit 2-to-1 multiplexer                              : 8
  1-bit 4-to-1 multiplexer                              : 4
  16-bit 2-to-1 multiplexer                             : 3
  8-bit 2-to-1 multiplexer                              : 4
@@ -363,7 +368,6 @@ WARNING:Xst:2677 - Node <U0/WRstate_FSM_FFd2> of sequential type is unconnected 
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 0) on block lab, actual ratio is 4.
-FlipFlop U0/PS2Data_sr_5 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -401,24 +405,23 @@ Top Level Output File Name         : design.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 702
+# BELS                             : 704
 #      GND                         : 1
 #      INV                         : 44
 #      LUT1                        : 108
-#      LUT2                        : 14
-#      LUT3                        : 27
-#      LUT4                        : 60
-#      LUT5                        : 35
-#      LUT6                        : 89
+#      LUT2                        : 15
+#      LUT3                        : 26
+#      LUT4                        : 64
+#      LUT5                        : 43
+#      LUT6                        : 82
 #      MUXCY                       : 171
-#      MUXF7                       : 3
 #      VCC                         : 1
 #      XORCY                       : 149
 # FlipFlops/Latches                : 139
-#      FD                          : 63
+#      FD                          : 62
 #      FDE                         : 9
 #      FDR                         : 16
-#      FDRE                        : 44
+#      FDRE                        : 45
 #      FDS                         : 1
 #      FDSE                        : 6
 # Shift Registers                  : 1
@@ -437,17 +440,17 @@ Selected Device : 6slx16csg324-3
 
 Slice Logic Utilization: 
  Number of Slice Registers:             139  out of  18224     0%  
- Number of Slice LUTs:                  378  out of   9112     4%  
-    Number used as Logic:               377  out of   9112     4%  
+ Number of Slice LUTs:                  383  out of   9112     4%  
+    Number used as Logic:               382  out of   9112     4%  
     Number used as Memory:                1  out of   2176     0%  
        Number used as SRL:                1
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    416
-   Number with an unused Flip Flop:     277  out of    416    66%  
-   Number with an unused LUT:            38  out of    416     9%  
-   Number of fully used LUT-FF pairs:   101  out of    416    24%  
-   Number of unique control sets:        10
+ Number of LUT Flip Flop pairs used:    421
+   Number with an unused Flip Flop:     282  out of    421    66%  
+   Number with an unused LUT:            38  out of    421     9%  
+   Number of fully used LUT-FF pairs:   101  out of    421    23%  
+   Number of unique control sets:        12
 
 IO Utilization: 
  Number of IOs:                          26
@@ -488,7 +491,7 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 5.813ns (Maximum Frequency: 172.036MHz)
+   Minimum period: 6.132ns (Maximum Frequency: 163.092MHz)
    Minimum input arrival time before clock: 4.057ns
    Maximum output required time after clock: 3.668ns
    Maximum combinational path delay: No path found
@@ -499,29 +502,29 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 5.813ns (frequency: 172.036MHz)
-  Total number of paths / destination ports: 9785 / 237
+  Clock period: 6.132ns (frequency: 163.092MHz)
+  Total number of paths / destination ports: 10927 / 238
 -------------------------------------------------------------------------
-Delay:               5.813ns (Levels of Logic = 5)
-  Source:            jumpctr_1 (FF)
+Delay:               6.132ns (Levels of Logic = 5)
+  Source:            jumpctr_2 (FF)
   Destination:       ypos_0 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: jumpctr_1 to ypos_0
+  Data Path: jumpctr_2 to ypos_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               3   0.447   1.015  jumpctr_1 (jumpctr_1)
+     FD:C->Q               3   0.447   1.015  jumpctr_2 (jumpctr_2)
      LUT6:I0->O            1   0.203   0.684  GND_6_o_jumpctr[19]_OR_79_o111 (GND_6_o_jumpctr[19]_OR_79_o11)
-     LUT5:I3->O           10   0.203   0.857  GND_6_o_jumpctr[19]_OR_79_o113 (N20)
-     LUT4:I3->O           16   0.205   1.109  _n0340_inv313 (N39)
-     LUT6:I4->O            1   0.203   0.580  Mmux_ypos[15]_GND_6_o_mux_80_OUT17 (ypos[15]_GND_6_o_mux_80_OUT<0>)
+     LUT5:I3->O            9   0.203   0.830  GND_6_o_jumpctr[19]_OR_79_o113 (N23)
+     LUT4:I3->O           17   0.205   1.028  _n0407_inv313 (N47)
+     LUT5:I4->O           16   0.205   1.005  _n0407_inv1_rstpot (_n0407_inv1_rstpot)
      LUT3:I2->O            1   0.205   0.000  ypos_0_dpot (ypos_0_dpot)
      FDSE:D                    0.102          ypos_0
     ----------------------------------------
-    Total                      5.813ns (1.568ns logic, 4.245ns route)
-                                       (27.0% logic, 73.0% route)
+    Total                      6.132ns (1.570ns logic, 4.562ns route)
+                                       (25.6% logic, 74.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
@@ -529,10 +532,10 @@ Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
 -------------------------------------------------------------------------
 Offset:              4.057ns (Levels of Logic = 2)
   Source:            rst (PAD)
-  Destination:       yctr_1 (FF)
+  Destination:       xctr_2 (FF)
   Destination Clock: clk rising
 
-  Data Path: rst to yctr_1
+  Data Path: rst to xctr_2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
@@ -572,21 +575,21 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    5.813|         |         |         |
+clk            |    6.132|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 6.47 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 6.18 secs
  
 --> 
 
 
-Total memory usage is 463828 kilobytes
+Total memory usage is 464116 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   15 (   0 filtered)
+Number of warnings :   16 (   0 filtered)
 Number of infos    :    7 (   0 filtered)
 
