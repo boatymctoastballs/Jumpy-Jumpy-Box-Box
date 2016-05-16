@@ -13,7 +13,6 @@ entity CPU is
     );
 end entity;
 architecture rtl of CPU is
-    signal playerPosY : std_logic_vector(15 downto 0) := X"DADA";
     -- Register
     signal ASR_REG : STD_LOGIC_VECTOR(15 downto 0) := X"0000";
     signal PC_REG  : STD_LOGIC_VECTOR(15 downto 0) := X"0000";
@@ -35,57 +34,58 @@ architecture rtl of CPU is
 
     signal ram : ram_type := (
     -- Programkod
-    X"0000", --00 LOAD PLAYER 1 HP
-    X"0000", --01 LOAD PLAYER 2 HP
-    X"0000", --02 LOAD MAP_VALUE
-    X"0000", --03 LOAD nMAPS
-    X"0000", --04 STAY UNTIL NEW FRAME
-    X"0000", --05 MOVE PLAYERS
-    X"0000", --06 MOVE PROJECTILES
-    X"0000", --07 HANDLE COLLISION
-    X"0000", --08 GET BURNING HORSE
-    X"0000", --09 BTST 1F
-    X"0000", --0A BNE HOPPA PLAYER 2 
-    X"0000", --0B SUB PLAYER_1_HÄLSA - 1
-    X"0000", --0C BNE GAMEOVER1  
-    X"0000", --0D LSR 1F                PLAYER 2 HOPP
-    X"0000", --0E BTST 1F
-    X"0000", --0F BNE MAPCOUNTER
-    X"0000", --10 SUB PLAYER_2_HÄLSA - 1
-    X"0000", --11 BNE GAMEOVER2
-    X"0000", --12 SUB MAP_COUNTER -1     MAP COUNTER
-    X"0000", --13 BNE NEW MAP
-    X"0000", --14 JMP START
-    X"0000", --15 LOAD MAP_COUNTER MAP_VALUE       NEW MAP 
-    X"0000", --16 SUB MAP 1            
-    X"0000", --17 BNE RESET MAP
-    X"0000", --18 JMP START
-    X"0000", --19 LOAD nMAPS       RESET MAP
-    X"0000", --1A JMP START
-    X"0000", --1B MAP_VALUE = FFF
-    X"0000", --1C START HP = FF
-    X"0000", --1D PLAYER2 ADDRESS
-    X"0000", --1E GAMEOVER1 ADDRESS
-    X"0000", --1F GAMEOVER2 ADDRESS
-    X"0000", --20 START ADDRESS
-    X"0000", --21 BURNING HORSE?
-    X"0000", --22 ETTA
-    X"0000", --23 NEW MAP ADRESS
-    X"0000", --24 MAP COUNTER ADRESS
-    X"0000", --25 nMAPS = 4
-    X"0000", --26 LOAD ENDSCREEN1      GAMEOVER 1
-    X"0000", --27 WAIT FOR RESET
-    X"0000", --28 JMP 0
-    X"0000", --29 ENDSCREEN1 ADRESS
-    X"0000", --2A LOAD ENDSCREEN2      GAMEOVER 2
-    X"0000", --2B WAIT FOR RESET
-    X"0000", --2C JMP 0
-    X"0000", --2D ENDSCREEN2 ADRESS
+    -- 0001 0000 0001 1010
+    X"101C", --00 
+    X"0000", --01 
+    X"0000", --02 
+    X"0000", --03 
+    X"0000", --04 
+    X"0000", --05 
+    X"0000", --06 
+    X"0000", --07 
+    X"0000", --08 
+    X"0000", --09 
+    X"0000", --0A 
+    X"0000", --0B 
+    X"0000", --0C 
+    X"0000", --0D 
+    X"0000", --0E 
+    X"0000", --0F 
+    X"0000", --10 
+    X"0000", --11 
+    X"0000", --12 
+    X"0000", --13 
+    X"0000", --14 
+    X"0000", --15 
+    X"0000", --16 
+    X"0000", --17 
+    X"0000", --18 
+    X"0000", --19 
+    X"0000", --1A 
+    X"0000", --1B 
+    X"ABBA", --1C 
+    X"0000", --1D 
+    X"0000", --1E 
+    X"0000", --1F 
+    X"0000", --20 
+    X"0000", --21 
+    X"0000", --22 
+    X"0000", --23 
+    X"0000", --24 
+    X"0000", --25 
+    X"0000", --26 
+    X"0000", --27 
+    X"0000", --28 
+    X"0000", --29 
+    X"0000", --2A 
+    X"0000", --2B 
+    X"0000", --2C 
+    X"0000", --2D 
     X"0000", --2E 
-    X"0000", --2F RESETMAP ADRESS
-    X"0000", --30 nMAPS ADRESS
-    X"0000", --31 RESET ADRESS1
-    X"0000", --32 RESET ADRESS2
+    X"0000", --2F 
+    X"0000", --30 
+    X"0000", --31 
+    X"0000", --32 
     X"0000", --33
     X"0000", --34
     X"0000", --35
@@ -271,18 +271,8 @@ architecture rtl of CPU is
     signal cur_map : std_logic_vector(1 downto 0) := "00"; -- Current map
 
 begin
-    -- connect flag to GPU NEW_FRAME flag
-    flag_newframe <= NEW_FRAME;
-    -- connect leddriver with Gr0-2
-    mem <= GR0_REG(7 downto 4) & GR1_REG(7 downto 4) & GR2_REG(7 downto 0);
-    -- connect GR3 with GPU Board
-    current_map <= GR3_REG(2 downto 0);
-    -- connect projectile position to GPU controller
-    proj_xpos1 <= projectile_xpos1;
-    proj_ypos1 <= projectile_ypos1;
-    proj_xpos2 <= projectile_xpos2;
-    proj_ypos2 <= projectile_ypos2;
 
+    playerPosY <= GR0_REG;
     -- ----------------------------------------
     -- # ASR Register
     -- ----------------------------------------
@@ -457,183 +447,32 @@ begin
             end case;
 
             if ALU_OP = "0100" then -- Reset player position
-                xpos_real1 <= to_sfixed(240, 9, -4);
-                ypos_real1 <= to_sfixed(240, 9, -4);
-                xpos_real2 <= to_sfixed(240, 9, -4);
-                ypos_real2 <= to_sfixed(240, 9, -4);
+
             end if;
 
             -- ----------------------------------------
             -- # PLAYER MOVER
             -- ----------------------------------------
             if ALU_OP = "1001" then
+                if knapp = '1' then
+                    if jumpctr = 0 and turnaround = '0' and ypos<= 295  then
+                        ypos <= ypos-1;
+                    elsif jumpctr = 0 and turnaround = '1' and ypos <= 295  then
+                        ypos <= ypos+1;
 
-                -- # Player 1
-                --X
-                if (joystick1(25 downto 24) & joystick1(39 downto 32)) > 450 and (joystick1(25 downto 24) & joystick1(39 downto 32)) < 560 then
-                    vel_x1 <= resize(vel_x1 / 2,2,-9); -- # FRICTION
-                else
-                    jstk_x1 <= (joystick1(25 downto 24) & joystick1(39 downto 32)) xor "1000000000";
-                    delta_x1 <= resize(to_sfixed(jstk_x1,0,-9),2,-9);
-                    vel_x1 <= resize((vel_x1 + delta_x1),2,-9);
-                end if;
-                if to_integer(resize(xpos_real1 + vel_x1,9,-4)) > 0 and to_integer(resize(xpos_real1 + vel_x1,9,-4)) < 500 then
-                    xpos_real1 <= resize(xpos_real1 + vel_x1,9,-4);
-                    xpos_int1 <= to_integer(xpos_real1);
-                end if;
-
-                --Y
-                if (joystick1(9 downto 8) & joystick1(23 downto 16)) > 450 and (joystick1(9 downto 8) & joystick1(23 downto 16)) < 560 then
-                    vel_y1 <= resize(vel_y1 / 2,2,-9); -- # FRICTION
-                else
-                    jstk_y1 <= (joystick1(9 downto 8) & joystick1(23 downto 16)) xor "1000000000";
-                    delta_y1 <= resize(to_sfixed(jstk_y1,0,-9),2,-9);
-                    vel_y1 <= resize((vel_y1 + delta_y1),2,-9);
-                end if;
-                if to_integer(resize(ypos_real1 - vel_y1,9,-4)) > 0 and to_integer(resize(ypos_real1 - vel_y1,9,-4)) < 460 then
-                    ypos_real1 <= resize(ypos_real1 - vel_y1,9,-4);
-                    ypos_int1 <= to_integer(ypos_real1);
-                end if;
-
-
-                -- # Player 2
-                --X
-                if (joystick2(25 downto 24) & joystick2(39 downto 32)) > 450 and (joystick2(25 downto 24) & joystick2(39 downto 32)) < 560 then
-                    vel_x2 <= resize(vel_x2 / 2,2,-9);
-                else
-                    jstk_x2 <= (joystick2(25 downto 24) & joystick2(39 downto 32)) xor "1000000000";
-                    delta_x2 <= resize(to_sfixed(jstk_x2,0,-9),2,-9);
-                    vel_x2 <= resize(vel_x2 + delta_x2,2,-9);
-                end if;
-                if to_integer(resize(xpos_real2 + vel_x2,9,-4)) > 0 and to_integer(resize(xpos_real2 + vel_x2,9,-4)) < 500 then
-                    xpos_real2 <= resize(xpos_real2 + vel_x2,9,-4);
-                    xpos_int2 <= to_integer(xpos_real2);
-                end if;
-
-                --Y
-                if (joystick2(9 downto 8) & joystick2(23 downto 16)) > 450 and (joystick2(9 downto 8) & joystick2(23 downto 16)) < 560 then
-                    vel_y2 <= resize(vel_y2 / 2,2,-9);
-                else
-                    jstk_y2 <= (joystick2(9 downto 8) & joystick2(23 downto 16)) xor "1000000000";
-                    delta_y2 <= resize(to_sfixed(jstk_y2,0,-9),2,-9);
-                    vel_y2 <= resize(vel_y2 + delta_y2,2,-9);
-                end if;
-                if to_integer(resize(ypos_real2 - vel_y2,9,-4)) > 0 and to_integer(resize(ypos_real2 - vel_y2,9,-4)) < 460 then
-                    ypos_real2 <= resize(ypos_real2 - vel_y2,9,-4);
-                    ypos_int2 <= to_integer(ypos_real2);
-                end if;
+                    elsif (jumpctr = 0 or jumpctr = x"7FFF") and turnaround = '0' and ypos >= 295 then
+                       ypos <= ypos-1;
+                    elsif (jumpctr = 0 or jumpctr = x"7FFF") and turnaround = '1' and ypos >= 295 then
+                      ypos <= ypos+1;
+                      if ypos = 339 then
+                         knapp <= '0';
+                            turnaround <= '0';
+                    end if;
             end if;
-
-            -- ----------------------------------------
-            -- # PROJECTILES
-            -- ----------------------------------------
             if ALU_OP = "1011" then
-                -- # Projectile 1
-                if joystick1(1) = '1' then
-                    if proj_active1 = '0' then
-                        proj_deltax1 <= resize(to_sfixed((not joystick1(25)&joystick1(24)&joystick1(39 downto 32)),3,-6),2,-9);
-                        proj_deltay1 <= resize(to_sfixed((not joystick1(9)&joystick1(8)&joystick1(23 downto 16)),3,-6),2,-9);
-                        proj_real_xpos1 <= xpos_real1;
-                        proj_real_ypos1 <= ypos_real1;
-                    end if;
-                   proj_active1 <= '1';
-                end if;
-
-                if proj_active1 = '1' then
-                    proj_real_xpos1 <= resize(proj_real_xpos1 + proj_deltax1,9,-4);
-                    projectile_xpos1 <= to_integer(proj_real_xpos1);
-                    proj_real_ypos1 <= resize(proj_real_ypos1 - proj_deltay1,9,-4);
-                    projectile_ypos1 <= to_integer(proj_real_ypos1);
-
-                    if to_integer(proj_real_xpos1) < 16 or to_integer(proj_real_xpos1) > 500 or 
-                       to_integer(proj_real_ypos1) < 16 or to_integer(proj_real_ypos1) > 460 then
-                        proj_active1 <= '0';
-                        proj_real_xpos1 <=  to_sfixed(640, 9, -4);
-                        proj_real_ypos1 <=  to_sfixed(480, 9, -4);
-                    else 
-                        proj_active1 <= '1';
-                    end if;
-
-                    if joystick1(2) = '1' then
-                        proj_real_xpos1 <= to_sfixed(-1, 9, -4);
-                        proj_real_ypos1 <= to_sfixed(-1, 9, -4);
-                    end if;
-                end if;
-
-
-                -- # Projectile 2
-                if joystick2(1) = '1' then
-                    if proj_active2 = '0' then
-                        proj_deltax2 <= resize(to_sfixed((not joystick2(25)&joystick2(24)&joystick2(39 downto 32)),3,-6),2,-9);
-                        proj_deltay2 <= resize(to_sfixed((not joystick2(9)&joystick2(8)&joystick2(23 downto 16)),3,-6),2,-9);
-                        proj_real_xpos2 <= xpos_real2;
-                        proj_real_ypos2 <= ypos_real2;
-                    end if;
-                   proj_active2 <= '1';
-                end if;
-
-                if proj_active2 = '1' then
-                    proj_real_xpos2 <= resize(proj_real_xpos2 + proj_deltax2,9,-4);
-                    projectile_xpos2 <= to_integer(proj_real_xpos2);
-                    proj_real_ypos2 <= resize(proj_real_ypos2 - proj_deltay2,9,-4);
-                    projectile_ypos2 <= to_integer(proj_real_ypos2);
-
-                    if to_integer(proj_real_xpos2) < 16 or to_integer(proj_real_xpos2) > 500 or 
-                       to_integer(proj_real_ypos2) < 16 or to_integer(proj_real_ypos2) > 460 then
-                        proj_real_xpos2 <=  to_sfixed(640, 9, -4);
-                        proj_real_ypos2 <=  to_sfixed(480, 9, -4);
-                        proj_active2 <= '0';
-                    else 
-                        proj_active2 <= '1';
-                    end if;
-                end if;
-
-                if joystick2(2) = '1' then
-                    proj_real_xpos2 <= to_sfixed(-1, 9, -4);
-                    proj_real_ypos2 <= to_sfixed(-1, 9, -4);
-                end if;
-            end if;
-
+            end if;  
             if ALU_OP = "1100" then
-                if to_integer(xpos_real1) > to_integer(proj_real_xpos2) - 16 and to_integer(xpos_real1) < to_integer(proj_real_xpos2) + 16 and 
-                   to_integer(ypos_real1) > to_integer(proj_real_ypos2) - 16 and to_integer(ypos_real1) < to_integer(proj_real_ypos2) + 16 then 
-                    -- Remove proj
-                    proj_real_xpos2 <= to_sfixed(-1, 9, -4);
-                    proj_real_ypos2 <= to_sfixed(-1, 9, -4);
-                    -- player1 hit
-                    hit_counter1 <= 15;
-                end if;
-                if to_integer(xpos_real2) > to_integer(proj_real_xpos1) - 16 and to_integer(xpos_real2) < to_integer(proj_real_xpos1) + 16 and 
-                   to_integer(ypos_real2) > to_integer(proj_real_ypos1) - 16 and to_integer(ypos_real2) < to_integer(proj_real_ypos1) + 16 then 
-                    -- Remove proj
-                    proj_real_xpos1 <= to_sfixed(-1, 9, -4);
-                    proj_real_ypos1 <= to_sfixed(-1, 9, -4);
-                    -- player2 hit
-                    hit_counter2 <= 15;
-                end if;             
-
-                if hit_counter1 > 0 then
-                    vel_x1 <= proj_deltax2;
-                    vel_y1 <= proj_deltay2;
-                    hit_counter1 <= hit_counter1 - 1;
-                end if; 
-                if hit_counter2 > 0 then
-                    vel_x2 <= proj_deltax1;
-                    vel_y2 <= proj_deltay1;
-                    hit_counter2 <= hit_counter2 - 1;
-                end if;  
-            end if;
-
-            if ALU_OP = "1101" then
-                AR_REG(15 downto 0) <= X"0000"; 
-                if horse_tile1 = "010" then --lava
-                    AR_REG(0) <= '1';
-                end if;
-                if horse_tile2 = "010" then --lava
-                    AR_REG(1) <= '1';
-                end if;
-            end if;
-
+            end if;  
         end if;
     end process;
 

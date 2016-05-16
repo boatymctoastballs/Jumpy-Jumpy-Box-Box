@@ -18,7 +18,9 @@ entity lab is
            ca,cb,cc,cd,ce,cf,cg,dp, Hsync,Vsync : out  STD_LOGIC;
            an : out  STD_LOGIC_VECTOR (3 downto 0);
 	   PS2KeyboardCLK	  : in STD_LOGIC;
-	   PS2KeyboardData        : in STD_LOGIC);
+	   PS2KeyboardData        : in STD_LOGIC
+		--PlayerPosX : in std_logic_vector(15 downto 0)
+		);
 	  -- boardSprites : in boardSprites_t);
 end lab;
 
@@ -30,15 +32,15 @@ architecture Behavioral of lab is
            ledvalue : in  STD_LOGIC_VECTOR (15 downto 0));
   end component;
 
-	--CPU component insignaler
- -- component CPU
-	--port ( clk,rst	: in std_logic; 
-		--playerPos	: in integer range 121 to 339;		-- Spelarens position
-		--boardSprites : in is array (0 to 10) of STD_LOGIC_VECTOR(19 downto 0); --sprites på skärmen
 
---);
-	--end component;
-
+	component CPU
+		Port
+		(
+	        CLK : in  STD_LOGIC;
+	        RST : in  STD_LOGIC;
+	        playerPosY : out std_logic_vector(15 downto 0)
+        );
+	end component;
 --bana1: sprite1 - posY = 1, tid= 1, sprite 2 ; sprite2 - posY = 3, tid=1 ... sprite(n) - posy = tid;
  --boardSprites(ele1,ele2,ele3,ele4..ele10) ; ele1= x=40, y=50, sprite=fårnudda 
 
@@ -95,12 +97,14 @@ architecture Behavioral of lab is
   signal vs : std_logic := '1';
   --type ram_t is array (0 to 59) of std_logic_vector(0 to 79);
   signal farg : std_logic_vector(7 downto 0) := "00000000";
+
   signal jumpctr : std_logic_vector(19 downto 0) := X"00000";
   signal PlayerPosX : std_logic_vector(15 downto 0) := std_logic_vector(to_unsigned(60, 16)); 
   signal ypos : std_logic_vector(15 downto 0) := std_logic_vector(to_unsigned(339, 16));
-  signal boxpos : std_logic_vector(15 downto 0) := std_logic_vector(to_unsigned(619, 16));
   signal knapp : std_logic := '0';
   signal turnaround : std_logic := '0';
+
+  signal boxpos : std_logic_vector(15 downto 0) := std_logic_vector(to_unsigned(619, 16));
   signal video : std_logic;
   signal boxctr : std_logic_vector(19 downto 0) := X"00000";
   signal ducka : std_logic := '0';
@@ -110,8 +114,8 @@ architecture Behavioral of lab is
   signal spriteYPos : std_logic_vector(8 downto 0);
   signal spriteType : std_logic := '0';
 ----------------------------------------------------
-  signal pix_counter : std_logic_vector(4 downto 0) := "00000"; -- count from 0 to 19 - 00000 to 10011
-
+  signal pix_counter : std_logic_vector(8 downto 0) := std_logic_vector(to_unsigned(0, 9)); --- 0-400
+  signal PlayerPosY2 : std_logic_vector(15 downto 0);
 	--colors for sprites
 	type colors_type is array (0 to 4) of std_logic_vector(7 downto 0);	
 	signal colors : colors_type := (
@@ -130,18 +134,18 @@ architecture Behavioral of lab is
 		"100","100","100","100","100","100","100","100","100","100","100","100","100","100","100","100","100","100","100","100",
 		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
 		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
+		"100","100","000","000","001","001","000","000","000","000","000","000","000","000","001","001","000","000","100","100",
+		"100","100","000","000","001","001","000","000","000","000","000","000","000","000","001","001","000","000","100","100",
 		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
 		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
 		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
 		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
 		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
 		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
-		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
-		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
-		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
-		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
-		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
-		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
+		"100","100","000","000","000","001","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
+		"100","100","000","000","000","001","000","000","000","000","000","000","000","000","001","000","000","000","100","100",
+		"100","100","000","000","000","001","001","000","000","000","000","000","000","001","000","000","000","000","100","100",
+		"100","100","000","000","000","000","001","001","001","001","001","001","001","001","000","000","000","000","100","100",
 		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
 		"100","100","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","000","100","100",
 		"100","100","100","100","100","100","100","100","100","100","100","100","100","100","100","100","100","100","100","100",
@@ -257,6 +261,7 @@ begin
 ------------------ RITA UPP SPELPLAN ---------------------------
   process(clk) begin
     if rising_edge(clk) then
+	 if pixel=3 then
 	  if xctr <= 639 and yctr <= 479 then
 		--------------RAM---------------------
 		if xctr = 0 or yctr = 479 or yctr = 0 or xctr = 639 then
@@ -270,11 +275,22 @@ begin
 			end if;
 		--------------------------------------------
 		-------------------SPELARE-----------------------
-			if xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<ypos+20 and yctr>ypos+10 and ducka = '1' then
-				farg <= x"0F";
-			elsif xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<ypos+20 and yctr>ypos and ducka = '0' then
-				farg <= x"0F";
+--			if xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<ypos+20 and yctr>ypos+10 and ducka = '1' then
+--				farg <= x"0F";
+--			elsif xctr>PlayerPosX and xctr<PlayerPosX+20 and yctr<ypos+20 and yctr>ypos and ducka = '0' then
+--				farg <= x"0F";
+--			end if;
+          	if xctr >= PlayerPosX and xctr < PlayerPosX + 20 and yctr >= ypos and yctr < ypos + 20 then
+				if xctr = PlayerPosX and yctr = ypos then
+					pix_counter <= "000000001";
+				else
+					pix_counter <= pix_counter + 1;
+				end if;
+				farg <= colors(conv_integer(playerSprite(conv_integer(pix_counter))));
 			end if;
+			--if pix_counter = 400 then
+			--		pix_counter <= "000000000";
+          	--end if;			
 		---------------------------------------------------
 		-------------------LÅDA---------------------------
 			if boxpos+20>=PlayerPosX and boxpos<=PlayerPosX+20 and ypos > 319 then	
@@ -300,7 +316,8 @@ begin
 		end if;
 	 else
 		farg <= "00000000";
-  	 end if; 
+  	 end if;
+	 end if; 
     end if;
   end process;
 
@@ -308,31 +325,6 @@ begin
 
 
 
--------------------RITA-UPP-SPRITES--------------------c-p-d-w--------
-	--process(clk) begin
-		--if rising_edge(clk) then
-			--for i in boardSprites' range loop
-				--spriteXPos <= boardSprites(i)(19 downto 10);  -- xpos for sprite
-				--spriteYPos <= boardSprites(i)(9 downto 1);   -- ypos for sprite
-				--spriteType <= boardSprites(i)(0 downto 0);   -- garattnuddasprite = 1 = gron, garinteattnuddasprite = 0 = rod
-				--if xctr >=spriteXPos and xctr< spriteXPos+20 and yctr >= spriteYPos and yctr < spriteYPos+20 then    --rita upp sprite
-				--	if spriteType = "1" then
-					--	farg <= "00011100";      -- gron
-					--elsif spriteType = "0" then
-					--	farg <= "11100000";     -- rod
-					--end if;
-				--end if;
-		--end if;	
-----------------------------------------------------------------------
-
------------------------------RITA-UPP-PLAYER-----------c-p-d-w-------
-	--process(clk) begin
-		--if rising_edge(clk) then
-			--if xctr>=60 and xctr<80 and yctr>=playerPos and yctr< playerPos+20 -- rita upp player
-				--farg <= x"00000011";    --blå
-			--end if;
-		--end if;	
----------------------------------------------------------------------
 
 
   vgaRed(2 downto 0) <= farg(7 downto 5);
@@ -405,8 +397,8 @@ begin
      if rising_edge(clk) then
        if rst='1' then
          ctr <= X"0000";
-       elsif data_s /= x"FF" then
-         ctr(7 downto 0) <= data_s;
+       elsif playerPosY2 /= x"FFFF" then
+         ctr(15 downto 0) <= playerPosY2;
 			 end if;
      end if;
   end process;
@@ -416,5 +408,6 @@ begin
  -- U1 : PICT_MEM port map(clk=>clk, we1=>we_s, data_in1=>data_s, addr1=>addr_s, we2=>'0', data_in2=>"00000000", data_out2=>data_out2_s, addr2=>addr2_s);
 --CPU : CPU(playerPos=>playerPos, boardSprites<=boardSprites);     
   led: leddriver port map (clk,rst,ca,cb,cc,cd,ce,cf,cg,dp,an, ctr);
+  skicka : cpu port map (clk, rst, playerPosY => playerPosY2);
 end Behavioral;
 

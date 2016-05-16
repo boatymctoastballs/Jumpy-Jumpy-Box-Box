@@ -6,7 +6,7 @@ Command Line: /sw/xilinx/ise_12.4i/ISE_DS/ISE/bin/lin64/unwrapped/ngdbuild -sd .
 ../synth/design.ngc design.ngd
 
 Reading NGO file
-"/edu/sanpo473/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/synth/design.ngc"
+"/edu/chrpe104/Desktop/Jumpy-Jumpy-Box-Box/GPU/lab-synthdir/synth/design.ngc"
 ...
 Gathering constraint information from source properties...
 Done.
@@ -29,10 +29,10 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   0
 
-Total memory usage is 350720 kilobytes
+Total memory usage is 356036 kilobytes
 
 Writing NGD file "design.ngd" ...
-Total REAL time to NGDBUILD completion:  2 sec
+Total REAL time to NGDBUILD completion:  3 sec
 Total CPU time to NGDBUILD completion:   2 sec
 
 Writing NGDBUILD log file "design.bld"...
